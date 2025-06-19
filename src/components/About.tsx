@@ -151,7 +151,7 @@ const About: React.FC = () => {
                     <div className="absolute inset-0 glass-strong rounded-full p-2 smooth-hover border border-black/10 dark:border-white/5 shadow-card-medium">
                       <div className="w-full h-full bg-gradient-to-br from-blue-400 to-purple-500 rounded-full p-1">
                         <img
-                          src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400"
+                          src="/images/harish.jpg"
                           alt="Nampally Harish"
                           className="w-full h-full object-cover rounded-full transition-transform duration-700 hover:scale-105"
                         />

@@ -55,8 +55,8 @@ const Projects: React.FC = () => {
       description:
         'A responsive weather application featuring location-based forecasts, interactive maps, and detailed analytics. Provides comprehensive weather insights with data visualization.',
       technologies: ['Vue.js', 'Node.js', 'OpenWeather API', 'Chart.js'],
-      githubUrl: 'https://github.com',
-      liveUrl: 'https://example.com',
+      githubUrl: 'https://github.com/nampallyharish4/WeatherVision.git',
+      liveUrl: 'https://weather-visoin.netlify.app/',
       image:
         'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?auto=format&fit=crop&w=800&q=80',
       category: 'Frontend',
