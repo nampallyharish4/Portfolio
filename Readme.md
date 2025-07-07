@@ -71,10 +71,6 @@ project-root/
 ## Deployment
 
 This site is easily deployable to platforms like Netlify, Vercel, or GitHub Pages.  
-**For Netlify:**
-
-- Ensure your resume PDF is in the `public` folder and committed to your repository.
-- After deployment, your resume will be downloadable from `https://your-site.netlify.app/Nampally_Harish_Resume.pdf`.
 
 ## License
 
