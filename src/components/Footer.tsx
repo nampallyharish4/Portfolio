@@ -38,7 +38,7 @@ const Footer: React.FC = () => {
                   
                   <div className="glass-medium rounded-xl p-4 inline-block mb-4 smooth-hover border border-white/10 shadow-card-small">
                     <p className="text-gray-300 flex items-center justify-center text-lg">
-                      Made with <Heart className="w-5 h-5 mx-2 text-red-400 fill-current animate-pulse" /> using React & Tailwind CSS
+                      Made with React & Tailwind CSS
                     </p>
                   </div>
                 </div>
