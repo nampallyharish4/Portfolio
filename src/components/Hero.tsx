@@ -1,19 +1,10 @@
 import React from 'react';
-import { ArrowDown, Github, Linkedin, Mail, Sparkles } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
-import { useParallax, useSmoothScroll } from '../hooks/useScrollEffect';
+import { useParallax } from '../hooks/useScrollEffect';
 
 const Hero: React.FC = () => {
   const parallaxOffset = useParallax(0.3);
-  const { scrollToElement } = useSmoothScroll();
-
-  const scrollToProjects = () => {
-    scrollToElement('projects', 80);
-  };
-
-  const scrollToContact = () => {
-    scrollToElement('contact', 80);
-  };
 
   return (
     <section
@@ -102,24 +93,17 @@ const Hero: React.FC = () => {
             {/* Enhanced CTA Buttons */}
             <ScrollReveal direction="up" delay={800} duration={1000}>
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
-                <button
-                  onClick={scrollToProjects}
+                <a
+                  href="/Nampally_Harish_Resume.pdf"
+                  download
                   className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 text-white px-12 py-6 rounded-2xl font-semibold text-xl shadow-2xl hover:shadow-3xl transition-all duration-700 hover:scale-110 smooth-hover border border-black/10 dark:border-white/10 shadow-card-light"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 dark:from-blue-300 dark:to-purple-300 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="relative flex items-center">
-                    View My Work
+                    Download Resume
                     <ArrowDown className="ml-4 w-6 h-6 group-hover:translate-y-2 transition-transform duration-500" />
                   </div>
-                </button>
-
-                <button
-                  onClick={scrollToContact}
-                  className="group glass-strong text-gray-800 dark:text-gray-100 px-12 py-6 rounded-2xl font-semibold text-xl hover:glass-medium transition-all duration-700 hover:scale-110 relative overflow-hidden smooth-hover border border-black/10 dark:border-white/5 shadow-card-medium"
-                >
-                  <div className="absolute inset-0 shimmer-effect opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <span className="relative">Get In Touch</span>
-                </button>
+                </a>
               </div>
             </ScrollReveal>
 
