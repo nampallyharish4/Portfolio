@@ -95,7 +95,7 @@ const Hero: React.FC = () => {
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
                 <a
                   href="/Nampally_Harish_Resume.pdf"
-                  download
+                  download="Nampally_Harish_Resume.pdf"
                   className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 text-white px-12 py-6 rounded-2xl font-semibold text-xl shadow-2xl hover:shadow-3xl transition-all duration-700 hover:scale-110 smooth-hover border border-black/10 dark:border-white/10 shadow-card-light"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 dark:from-blue-300 dark:to-purple-300 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
