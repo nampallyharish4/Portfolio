@@ -270,7 +270,6 @@ ${formData.message}
                             onChange={handleInputChange}
                             required
                             className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-4 glass-strong rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:glass-ultra transition-all duration-500 text-sm sm:text-base text-gray-800 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 smooth-hover border border-black/10 dark:border-white/5 shadow-card-small"
-                            placeholder="John Doe"
                           />
                         </div>
                       </div>
@@ -296,7 +295,6 @@ ${formData.message}
                             onChange={handleInputChange}
                             required
                             className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-4 glass-strong rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:glass-ultra transition-all duration-500 text-sm sm:text-base text-gray-800 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 smooth-hover border border-black/10 dark:border-white/5 shadow-card-small"
-                            placeholder="john@example.com"
                           />
                         </div>
                       </div>
@@ -323,7 +321,6 @@ ${formData.message}
                           required
                           rows={6}
                           className="w-full h-full min-h-[150px] sm:min-h-[200px] pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-4 glass-strong rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:glass-ultra transition-all duration-500 text-sm sm:text-base text-gray-800 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 resize-none smooth-hover border border-black/10 dark:border-white/5 shadow-card-small"
-                          placeholder="Tell me about your project, timeline, budget, or any specific requirements you have in mind..."
                         />
                       </div>
                     </div>
@@ -400,7 +397,7 @@ ${formData.message}
                       >
                         <div
                           onClick={method.action}
-                          className={`group p-4 sm:p-6 rounded-lg sm:rounded-xl transition-all duration-500 hover:scale-105 smooth-hover cursor-pointer ${method.bgColor} border-2 border-black/10 dark:border-white/5 shadow-card-small`}
+                          className={`group p-4 sm:p-6 rounded-lg sm:rounded-xl transition-all duration-200 hover:scale-105 smooth-hover cursor-pointer ${method.bgColor} border-2 border-black/10 dark:border-white/5 shadow-card-small`}
                         >
                           <div className="flex items-start space-x-3 sm:space-x-4">
                             <div
@@ -447,11 +444,11 @@ ${formData.message}
                           href={social.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="group flex flex-col items-center p-3 sm:p-4 glass-strong rounded-lg sm:rounded-xl hover:glass-ultra transition-all duration-700 hover:scale-105 hover:-rotate-1 relative overflow-hidden smooth-hover border border-black/10 dark:border-white/5 shadow-card-small"
+                          className="group flex flex-col items-center p-3 sm:p-4 glass-strong rounded-lg sm:rounded-xl hover:glass-ultra transition-all duration-200 hover:scale-105 hover:-rotate-1 relative overflow-hidden smooth-hover border border-black/10 dark:border-white/5 shadow-card-small"
                         >
                           <div className="absolute inset-0 shimmer-effect opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
                           <div
-                            className={`p-2 sm:p-3 rounded-lg ${social.color} ${social.hoverColor} group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 mb-2 border border-black/10 dark:border-white/5 shadow-card-small`}
+                            className={`p-2 sm:p-3 rounded-lg ${social.color} ${social.hoverColor} group-hover:scale-110 group-hover:rotate-12 transition-all duration-200 mb-2 border border-black/10 dark:border-white/5 shadow-card-small`}
                           >
                             {social.icon}
                           </div>

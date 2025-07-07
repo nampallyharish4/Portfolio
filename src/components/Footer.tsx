@@ -48,7 +48,7 @@ const Footer: React.FC = () => {
                 <div className="flex flex-col items-center space-y-4">
                   <div className="glass-light rounded-xl p-3 smooth-hover border border-white/5 shadow-card-small">
                     <p className="text-gray-300 text-base font-medium">
-                      © 2024 Nampally Harish. All rights reserved.
+                      © 2025 Nampally Harish. All rights reserved.
                     </p>
                   </div>
                   
