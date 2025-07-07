@@ -73,11 +73,9 @@ const Hero: React.FC = () => {
             <ScrollReveal direction="up" delay={200} duration={1000}>
               <div className="mb-12">
                 <div className="flex items-center justify-center mb-6">
-                  <Sparkles className="w-8 h-8 text-blue-500 dark:text-blue-400 mr-4 animate-pulse transition-colors duration-500" />
                   <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-gray-800 via-blue-600 to-purple-600 dark:from-white dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent transition-all duration-500">
                     Nampally Harish
                   </h1>
-                  <Sparkles className="w-8 h-8 text-purple-500 dark:text-purple-400 ml-4 animate-pulse animation-delay-2000 transition-colors duration-500" />
                 </div>
               </div>
             </ScrollReveal>
