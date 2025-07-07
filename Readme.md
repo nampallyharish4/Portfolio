@@ -80,4 +80,3 @@ This site is easily deployable to platforms like Netlify, Vercel, or GitHub Page
 
 This project is open source and available under the [MIT License](LICENSE).
 
-Let me know if you want to add more sections (like About Me, Screenshots, or Technologies Used)!
