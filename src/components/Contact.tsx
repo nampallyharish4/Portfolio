@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Github, Linkedin } from 'lucide-react';
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  Github,
+  Linkedin,
+  Twitter,
+} from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 
 const Contact: React.FC = () => {
@@ -94,20 +102,22 @@ const Contact: React.FC = () => {
                   </h4>
                   <div className="flex space-x-4">
                     <a
-                      href="https://github.com/nampallyharish4"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-4 rounded-xl glass-light hover:glass-ultra transition-all hover:scale-110 hover:text-blue-500"
+                      href="#"
+                      className="p-4 rounded-xl glass-light hover:glass-ultra transition-all"
                     >
                       <Github className="w-6 h-6" />
                     </a>
                     <a
-                      href="https://www.linkedin.com/in/nampallyharish4/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-4 rounded-xl glass-light hover:glass-ultra transition-all hover:scale-110 hover:text-blue-500"
+                      href="#"
+                      className="p-4 rounded-xl glass-light hover:glass-ultra transition-all"
                     >
                       <Linkedin className="w-6 h-6" />
+                    </a>
+                    <a
+                      href="#"
+                      className="p-4 rounded-xl glass-light hover:glass-ultra transition-all"
+                    >
+                      <Twitter className="w-6 h-6" />
                     </a>
                   </div>
                 </div>
