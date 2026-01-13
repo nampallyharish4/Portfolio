@@ -8,24 +8,36 @@ const ThemeToggle: React.FC = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="group relative p-3 hover:scale-110 transition-all duration-500 smooth-hover cursor-pointer"
+      className="group relative p-2 hover:scale-105 transition-transform duration-300 focus:outline-none"
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
     >
-      {/* Simple toggle container - Completely clean, no borders or effects */}
-      <div className="relative w-12 h-6 bg-gray-300 dark:bg-gray-600 rounded-full transition-colors duration-500">
-        {/* Sliding indicator - Clean and minimal */}
-        <div 
-          className={`absolute top-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform duration-500 ease-out ${
-            theme === 'dark' ? 'translate-x-6' : 'translate-x-0.5'
+      <div
+        className={`relative w-14 h-7 rounded-full transition-colors duration-500 ease-in-out ${
+          theme === 'light'
+            ? 'bg-slate-200 shadow-inner'
+            : 'bg-slate-700 shadow-[inset_0_2px_4px_rgba(0,0,0,0.3)]'
+        }`}
+      >
+        <div
+          className={`absolute top-1 left-1 w-5 h-5 bg-white rounded-full shadow-md transform transition-all duration-500 cubic-bezier(0.4, 0.0, 0.2, 1) flex items-center justify-center ${
+            theme === 'dark' ? 'translate-x-7' : 'translate-x-0'
           }`}
         >
-          {/* Icon container */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            {theme === 'light' ? (
-              <Sun className="w-3 h-3 text-yellow-500 transition-all duration-300" />
-            ) : (
-              <Moon className="w-3 h-3 text-blue-600 transition-all duration-300" />
-            )}
+          <div className="relative w-full h-full flex items-center justify-center">
+            <Sun
+              className={`absolute w-3.5 h-3.5 text-yellow-500 transition-all duration-500 ${
+                theme === 'light'
+                  ? 'rotate-0 opacity-100 scale-100'
+                  : '-rotate-90 opacity-0 scale-0'
+              }`}
+            />
+            <Moon
+              className={`absolute w-3.5 h-3.5 text-blue-600 transition-all duration-500 ${
+                theme === 'dark'
+                  ? 'rotate-0 opacity-100 scale-100'
+                  : 'rotate-90 opacity-0 scale-0'
+              }`}
+            />
           </div>
         </div>
       </div>

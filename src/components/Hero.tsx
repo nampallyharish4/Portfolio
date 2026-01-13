@@ -1,141 +1,124 @@
 import React from 'react';
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
-import { useParallax } from '../hooks/useScrollEffect';
+import { useParallax, useSmoothScroll } from '../hooks/useScrollEffect';
 
 const Hero: React.FC = () => {
   const parallaxOffset = useParallax(0.3);
+  const { scrollToElement } = useSmoothScroll();
 
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 bg-slate-50 dark:bg-gray-950"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 pb-32"
     >
-      {/* Enhanced background gradient with parallax */}
+      {/* Dynamic Background Elements */}
+      <div className="absolute inset-0 -z-10 bg-slate-50 dark:bg-gray-950 transition-colors duration-700" />
+
       <div
-        className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors duration-700"
-        style={{ transform: `translateY(${parallaxOffset}px)` }}
-      ></div>
-      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 dark:via-black/20 to-transparent transition-colors duration-700"></div>
-
-      {/* Floating background elements with enhanced glass effect and parallax */}
+        className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-400/20 dark:bg-blue-600/10 rounded-full blur-[120px] animate-pulse"
+        style={{ transform: `translateY(${parallaxOffset * 0.5}px)` }}
+      />
       <div
-        className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-br from-blue-200/30 to-indigo-200/30 dark:from-blue-500/5 dark:to-indigo-500/5 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse transition-colors duration-700"
-        style={{
-          transform: `translateY(${parallaxOffset * 0.5}px) rotate(${
-            parallaxOffset * 0.1
-          }deg)`,
-        }}
-      ></div>
-      <div
-        className="absolute top-40 right-20 w-80 h-80 bg-gradient-to-br from-indigo-200/30 to-purple-200/30 dark:from-indigo-500/5 dark:to-purple-500/5 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse animation-delay-2000 transition-colors duration-700"
-        style={{
-          transform: `translateY(${parallaxOffset * 0.7}px) rotate(${
-            -parallaxOffset * 0.1
-          }deg)`,
-        }}
-      ></div>
-      <div
-        className="absolute -bottom-20 left-40 w-72 h-72 bg-gradient-to-br from-purple-200/30 to-blue-200/30 dark:from-purple-500/5 dark:to-blue-500/5 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse animation-delay-4000 transition-colors duration-700"
-        style={{
-          transform: `translateY(${parallaxOffset * 0.4}px) rotate(${
-            parallaxOffset * 0.05
-          }deg)`,
-        }}
-      ></div>
+        className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-400/20 dark:bg-purple-600/10 rounded-full blur-[120px] animate-pulse delay-700"
+        style={{ transform: `translateY(${parallaxOffset * -0.5}px)` }}
+      />
 
-      {/* Floating particles */}
-      <div className="absolute inset-0">
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-      </div>
-
-      {/* Main content without box container */}
-      <div className="relative z-10 text-center px-6 max-w-7xl mx-auto w-full">
-        <ScrollReveal
-          direction="scale"
-          duration={1200}
-          easing="cubic-bezier(0.34, 1.56, 0.64, 1)"
-        >
-          <div className="relative">
-            <ScrollReveal direction="up" delay={200} duration={1000}>
-              <div className="mb-12">
-                <div className="flex items-center justify-center mb-6">
-                  <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-gray-800 via-blue-600 to-purple-600 dark:from-white dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent transition-all duration-500">
-                    Nampally Harish
-                  </h1>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal direction="up" delay={400} duration={1000}>
-              <div className="glass-medium rounded-2xl p-8 mb-10 relative overflow-hidden smooth-hover border border-black/10 dark:border-white/5 shadow-card-medium">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-400/5 dark:to-purple-400/5 transition-colors duration-500"></div>
-                <p className="relative text-3xl md:text-4xl lg:text-5xl text-gray-700 dark:text-gray-100 font-light transition-colors duration-500">
-                  Full-Stack Developer
-                </p>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal direction="up" delay={600} duration={1000}>
-              <div className="glass-light rounded-xl p-8 mb-12 smooth-hover border border-black/10 dark:border-white/5 shadow-card-small">
-                <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-5xl mx-auto leading-relaxed transition-colors duration-500">
-                  Creating functional digital solutions with modern
-                  technologies. Passionate about clean code and solving complex
-                  problems.
-                </p>
-              </div>
-            </ScrollReveal>
-
-            {/* Enhanced CTA Buttons */}
-            <ScrollReveal direction="up" delay={800} duration={1000}>
-              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
-                <a
-                  href="/Nampally_Harish_Resume.pdf"
-                  download="Nampally_Harish_Resume.pdf"
-                  className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 text-white px-12 py-6 rounded-2xl font-semibold text-xl shadow-2xl hover:shadow-3xl transition-all duration-700 hover:scale-110 smooth-hover border border-black/10 dark:border-white/10 shadow-card-light"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 dark:from-blue-300 dark:to-purple-300 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="relative flex items-center">
-                    Download Resume
-                    <ArrowDown className="ml-4 w-6 h-6 group-hover:translate-y-2 transition-transform duration-500" />
-                  </div>
-                </a>
-              </div>
-            </ScrollReveal>
-
-            {/* Enhanced Social Links */}
-            <ScrollReveal direction="up" delay={1000} duration={1000}>
-              <div className="flex justify-center space-x-8">
-                <a
-                  href="https://github.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group glass-medium p-5 rounded-2xl hover:glass-strong transition-all duration-700 hover:scale-125 hover:rotate-12 smooth-hover border border-black/10 dark:border-white/5 shadow-card-small"
-                >
-                  <Github className="w-8 h-8 text-gray-700 dark:text-gray-200 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-500" />
-                </a>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group glass-medium p-5 rounded-2xl hover:glass-strong transition-all duration-700 hover:scale-125 hover:rotate-12 smooth-hover border border-black/10 dark:border-white/5 shadow-card-small"
-                >
-                  <Linkedin className="w-8 h-8 text-gray-700 dark:text-gray-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-500" />
-                </a>
-                <a
-                  href="mailto:nampallyharish5544@gmail.com"
-                  className="group glass-medium p-5 rounded-2xl hover:glass-strong transition-all duration-700 hover:scale-125 hover:rotate-12 smooth-hover border border-black/10 dark:border-white/5 shadow-card-small"
-                >
-                  <Mail className="w-8 h-8 text-gray-700 dark:text-gray-200 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-500" />
-                </a>
-              </div>
-            </ScrollReveal>
+      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full text-center">
+        <ScrollReveal direction="fade" duration={1200}>
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full glass-light border border-white/20 dark:border-white/10 mb-8 animate-bounce">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+            </span>
+            <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
+              Available for new projects
+            </span>
           </div>
         </ScrollReveal>
+
+        <ScrollReveal direction="up" delay={200}>
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight mb-6">
+            <span className="bg-gradient-to-r from-slate-900 via-blue-600 to-slate-900 dark:from-white dark:via-blue-400 dark:to-white bg-clip-text text-transparent">
+              Nampally Harish
+            </span>
+          </h1>
+        </ScrollReveal>
+
+        <ScrollReveal direction="up" delay={400}>
+          <div className="max-w-3xl mx-auto mb-12">
+            <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 font-light leading-relaxed">
+              Crafting{' '}
+              <span className="text-slate-900 dark:text-white font-medium">
+                high-performance
+              </span>{' '}
+              digital experiences with{' '}
+              <span className="text-blue-600 dark:text-blue-400 italic">
+                Full-Stack excellence
+              </span>
+              .
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal direction="up" delay={600}>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+            <button
+              onClick={() => scrollToElement('projects', 100)}
+              className="px-8 py-4 rounded-2xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold shadow-2xl hover:scale-105 transition-all duration-300 flex items-center group"
+            >
+              View My Work
+              <ArrowDown className="ml-2 w-5 h-5 group-hover:translate-y-1 transition-transform" />
+            </button>
+            <button
+              onClick={() => scrollToElement('contact', 100)}
+              className="px-8 py-4 rounded-2xl glass-strong hover:glass-ultra font-semibold hover:scale-105 transition-all duration-300 flex items-center"
+            >
+              Let's Talk
+              <Mail className="ml-2 w-5 h-5" />
+            </button>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal direction="up" delay={800}>
+          <div className="flex justify-center space-x-6">
+            {[
+              {
+                icon: <Github className="w-6 h-6" />,
+                href: 'https://github.com/nampallyharish4',
+              },
+              {
+                icon: <Linkedin className="w-6 h-6" />,
+                href: 'https://www.linkedin.com/in/nampallyharish4/',
+              },
+              {
+                icon: <Mail className="w-6 h-6" />,
+                href: 'mailto:nampallyharish5544@gmail.com',
+              },
+            ].map((social, i) => (
+              <a
+                key={i}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-4 rounded-2xl glass-medium hover:glass-ultra hover:scale-110 hover:-rotate-12 transition-all duration-300"
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
+        </ScrollReveal>
+      </div>
+
+      {/* Floating Scroll Indicator */}
+      <div
+        onClick={() => scrollToElement('about', 100)}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer flex flex-col items-center opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-110 group"
+      >
+        <span className="text-xs font-medium mb-2 uppercase tracking-widest group-hover:text-blue-500 transition-colors">
+          Scroll
+        </span>
+        <div className="w-px h-12 bg-gradient-to-b from-slate-400 to-transparent dark:from-slate-500 group-hover:from-blue-500 transition-all duration-300" />
       </div>
     </section>
   );

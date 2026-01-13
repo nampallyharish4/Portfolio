@@ -1,205 +1,91 @@
 import React from 'react';
-import {
-  Code,
-  Palette,
-  Zap,
-  Heart,
-  Cpu,
-  Database,
-  Cloud,
-  Smartphone,
-} from 'lucide-react';
-import { Skill } from '../types';
+import { Code, Database, Cloud, Zap } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
-import { useParallax } from '../hooks/useScrollEffect';
 
 const TechnicalSkills: React.FC = () => {
-  const parallaxOffset = useParallax(0.15);
-
   const skills = [
     {
       name: 'React',
       level: 90,
-      icon: 'code',
-      color: 'text-blue-500',
-      bgColor: 'bg-blue-100 dark:bg-blue-900/30',
+      icon: <Code className="w-6 h-6" />,
+      color: 'from-blue-500 to-blue-600',
     },
     {
       name: 'Angular',
       level: 85,
-      icon: 'code',
-      color: 'text-red-500',
-      bgColor: 'bg-red-100 dark:bg-red-900/30',
+      icon: <Code className="w-6 h-6" />,
+      color: 'from-red-500 to-red-600',
     },
     {
       name: 'Java',
       level: 85,
-      icon: 'code',
-      color: 'text-orange-500',
-      bgColor: 'bg-orange-100 dark:bg-orange-900/30',
+      icon: <Zap className="w-6 h-6" />,
+      color: 'from-orange-500 to-orange-600',
     },
     {
       name: 'Python',
       level: 85,
-      icon: 'code',
-      color: 'text-yellow-500',
-      bgColor: 'bg-yellow-100 dark:bg-yellow-900/30',
+      icon: <Code className="w-6 h-6" />,
+      color: 'from-yellow-500 to-yellow-600',
     },
     {
       name: 'C++',
       level: 80,
-      icon: 'code',
-      color: 'text-purple-500',
-      bgColor: 'bg-purple-100 dark:bg-purple-900/30',
+      icon: <Code className="w-6 h-6" />,
+      color: 'from-purple-500 to-purple-600',
     },
     {
-      name: 'Database Management',
+      name: 'Database',
       level: 85,
-      icon: 'database',
-      color: 'text-green-500',
-      bgColor: 'bg-green-100 dark:bg-green-900/30',
+      icon: <Database className="w-6 h-6" />,
+      color: 'from-green-500 to-green-600',
     },
     {
-      name: 'Google Cloud Platform',
+      name: 'Cloud (GCP)',
       level: 85,
-      icon: 'cloud',
-      color: 'text-blue-400',
-      bgColor: 'bg-blue-100 dark:bg-blue-900/30',
-    },
-    {
-      name: 'Version Control',
-      level: 90,
-      icon: 'git-branch',
-      color: 'text-gray-700 dark:text-gray-300',
-      bgColor: 'bg-gray-100 dark:bg-gray-800/30',
+      icon: <Cloud className="w-6 h-6" />,
+      color: 'from-blue-400 to-indigo-500',
     },
   ];
 
-  const getIcon = (iconName: string) => {
-    switch (iconName) {
-      case 'code':
-        return <Code className="w-5 h-5" />;
-      case 'palette':
-        return <Palette className="w-5 h-5" />;
-      case 'zap':
-        return <Zap className="w-5 h-5" />;
-      case 'database':
-        return <Database className="w-5 h-5" />;
-      case 'cloud':
-        return <Cloud className="w-5 h-5" />;
-      case 'smartphone':
-        return <Smartphone className="w-5 h-5" />;
-      case 'cpu':
-        return <Cpu className="w-5 h-5" />;
-      case 'git-branch':
-        return <Heart className="w-5 h-5" />;
-      default:
-        return <Heart className="w-5 h-5" />;
-    }
-  };
-
   return (
-    <section
-      id="skills"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden py-20 bg-slate-50 dark:bg-gray-950"
-    >
-      {/* Enhanced Background with parallax */}
-      <div
-        className="absolute inset-0 bg-gradient-to-b from-indigo-50 via-purple-50 to-pink-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors duration-700"
-        style={{ transform: `translateY(${parallaxOffset}px)` }}
-      ></div>
-      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 dark:via-black/20 to-transparent transition-colors duration-700"></div>
-
-      {/* Floating background elements with parallax */}
-      <div
-        className="absolute top-20 left-20 w-80 h-80 bg-gradient-to-br from-blue-200/30 to-indigo-200/30 dark:from-blue-500/5 dark:to-indigo-500/5 rounded-full filter blur-3xl opacity-50 transition-colors duration-700"
-        style={{
-          transform: `translateY(${parallaxOffset * 0.6}px) rotate(${
-            parallaxOffset * 0.1
-          }deg)`,
-        }}
-      ></div>
-      <div
-        className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-br from-purple-200/30 to-pink-200/30 dark:from-purple-500/5 dark:to-pink-500/5 rounded-full filter blur-3xl opacity-50 transition-colors duration-700"
-        style={{
-          transform: `translateY(${parallaxOffset * 0.4}px) rotate(${
-            -parallaxOffset * 0.1
-          }deg)`,
-        }}
-      ></div>
-
-      <div className="relative z-10 max-w-6xl mx-auto px-6 w-full">
-        <ScrollReveal direction="up" duration={1000}>
+    <section id="skills" className="py-24 relative">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <ScrollReveal direction="up">
           <div className="text-center mb-16">
-            <div className="flex justify-center mb-8">
-              <div className="glass-medium section-heading-light rounded-2xl p-8 smooth-hover border-2 border-black/10 dark:border-white/10 shadow-card-light">
-                <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-800 via-blue-600 to-purple-600 dark:from-white dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent transition-all duration-500">
-                  Technical Skills
-                </h2>
-              </div>
-            </div>
-            <div className="flex justify-center">
-              <div className="glass-light rounded-xl p-6 max-w-4xl smooth-hover border border-black/10 dark:border-white/5 shadow-card-small">
-                <p className="text-lg text-gray-600 dark:text-gray-300 transition-colors duration-500">
-                  A comprehensive overview of my technical expertise and
-                  proficiency levels across various technologies.
-                </p>
-              </div>
-            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-slate-900 to-slate-500 dark:from-white dark:to-slate-400 bg-clip-text text-transparent inline-block font-sans">
+              Technical Expertise
+            </h2>
+            <div className="w-20 h-1.5 bg-blue-500 mx-auto rounded-full" />
           </div>
         </ScrollReveal>
 
-        {/* Skills Grid */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {skills.map((skill, index) => (
-            <ScrollReveal
-              key={index}
-              direction={index % 2 === 0 ? 'left' : 'right'}
-              delay={200 + index * 100}
-              duration={1000}
-            >
-              <div className="group glass-ultra rounded-2xl p-8 shadow-2xl relative overflow-hidden smooth-hover border-2 border-black/10 dark:border-white/5 shadow-card-light">
-                <div className="absolute inset-0 shimmer-effect opacity-0 group-hover:opacity-30 transition-opacity duration-700"></div>
-
-                <div className="relative">
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="flex items-center space-x-4">
-                      <div className="glass-strong p-4 rounded-xl text-gray-700 dark:text-gray-200 group-hover:scale-125 group-hover:rotate-12 transition-all duration-700 border border-black/10 dark:border-white/5 shadow-card-small">
-                        {getIcon(skill.icon)}
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 transition-colors duration-500">
-                          {skill.name}
-                        </h3>
-                        <div className="glass-light px-4 py-2 rounded-lg mt-2 inline-block smooth-hover border border-black/10 dark:border-white/5 shadow-card-small">
-                          <span className="text-sm font-bold text-gray-600 dark:text-gray-300 transition-colors duration-500">
-                            {skill.level}% Proficiency
-                          </span>
-                        </div>
-                      </div>
-                    </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {skills.map((skill, i) => (
+            <ScrollReveal key={i} direction="up" delay={i * 100}>
+              <div className="glass-ultra rounded-3xl p-8 hover:glass-strong transition-all duration-300 group border border-white/10 hover:border-blue-500/30 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2">
+                <div className="flex items-center space-x-4 mb-8">
+                  <div className="p-4 rounded-2xl bg-slate-100 dark:bg-white/5 text-blue-500 group-hover:scale-110 transition-transform">
+                    {skill.icon}
                   </div>
+                  <h3 className="text-2xl font-bold">{skill.name}</h3>
+                </div>
 
-                  {/* Enhanced Progress Bar */}
-                  <div className="relative">
-                    <div className="h-4 glass-medium rounded-full overflow-hidden mb-2 border border-black/10 dark:border-white/5 shadow-card-small">
-                      <div
-                        className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full transition-all duration-2000 ease-out relative overflow-hidden"
-                        style={{
-                          width: `${skill.level}%`,
-                          animationDelay: `${200 + index * 100}ms`,
-                        }}
-                      >
-                        <div className="absolute inset-0 shimmer-effect"></div>
-                      </div>
-                    </div>
-
-                    {/* Skill Level Indicator */}
-                    <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400">
-                      <span>Beginner</span>
-                      <span>Intermediate</span>
-                      <span>Advanced</span>
-                      <span>Expert</span>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-end">
+                    <span className="text-sm font-bold text-slate-500 uppercase tracking-widest">
+                      Proficiency
+                    </span>
+                    <span className="text-2xl font-bold text-blue-500">
+                      {skill.level}%
+                    </span>
+                  </div>
+                  <div className="h-3 w-full bg-slate-100 dark:bg-white/5 rounded-full overflow-hidden p-0.5">
+                    <div
+                      className={`h-full rounded-full bg-gradient-to-r ${skill.color} transition-all duration-1000 ease-out relative`}
+                      style={{ width: `${skill.level}%` }}
+                    >
+                      <div className="absolute inset-0 shimmer-effect opacity-30" />
                     </div>
                   </div>
                 </div>
@@ -208,35 +94,30 @@ const TechnicalSkills: React.FC = () => {
           ))}
         </div>
 
-        {/* Additional Skills Summary */}
-        <ScrollReveal direction="up" delay={1000} duration={1000}>
-          <div className="mt-16 text-center">
-            <div className="glass-ultra rounded-2xl p-8 max-w-4xl mx-auto smooth-hover border-2 border-black/10 dark:border-white/5 shadow-card-light">
-              <div className="relative">
-                <div className="absolute inset-0 shimmer-effect opacity-20"></div>
-                <div className="relative">
-                  <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6 transition-colors duration-500">
-                    Additional Expertise
-                  </h3>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {[
-                      'Git & Version Control',
-                      'Agile Methodologies',
-                      'Testing & QA',
-                      'DevOps & CI/CD',
-                    ].map((skill, index) => (
-                      <div
-                        key={index}
-                        className="glass-medium p-4 rounded-xl smooth-hover border border-black/10 dark:border-white/5 shadow-card-small"
-                      >
-                        <span className="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors duration-500">
-                          {skill}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+        {/* Floating Skill Badges */}
+        <ScrollReveal direction="up" delay={800}>
+          <div className="mt-20 glass-medium p-8 rounded-[2rem] border border-white/5 text-center">
+            <h3 className="text-xl font-bold mb-8 text-slate-500 uppercase tracking-widest">
+              Additional Skills
+            </h3>
+            <div className="flex flex-wrap justify-center gap-4">
+              {[
+                'Git',
+                'Tailwind CSS',
+                'Docker',
+                'Firebase',
+                'REST APIs',
+                'Agile',
+                'Vite',
+                'TypeScript',
+              ].map((s, i) => (
+                <span
+                  key={i}
+                  className="px-6 py-3 rounded-xl glass-light hover:glass-ultra transition-all font-medium border border-white/10 hover:border-blue-500/50 hover:text-blue-500 hover:scale-110 cursor-default"
+                >
+                  {s}
+                </span>
+              ))}
             </div>
           </div>
         </ScrollReveal>
