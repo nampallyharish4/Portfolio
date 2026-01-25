@@ -1,5 +1,76 @@
 import { useRef, useState, useCallback, useEffect } from 'react';
 
+export const usePrefersReducedMotion = () => {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  });
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(mediaQuery.matches);
+    
+    const handleChange = (e: MediaQueryListEvent) => {
+      setPrefersReducedMotion(e.matches);
+    };
+    
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
+
+  return prefersReducedMotion;
+};
+
+export const useMousePosition = () => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [normalizedPosition, setNormalizedPosition] = useState({ x: 0, y: 0 });
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  });
+  const rafRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(mediaQuery.matches);
+    
+    const handleChange = (e: MediaQueryListEvent) => {
+      setPrefersReducedMotion(e.matches);
+    };
+    
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
+
+  useEffect(() => {
+    if (prefersReducedMotion) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
+
+      rafRef.current = requestAnimationFrame(() => {
+        setMousePosition({ x: e.clientX, y: e.clientY });
+        setNormalizedPosition({
+          x: (e.clientX / window.innerWidth) * 2 - 1,
+          y: (e.clientY / window.innerHeight) * 2 - 1,
+        });
+      });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
+    };
+  }, [prefersReducedMotion]);
+
+  return { mousePosition, normalizedPosition, prefersReducedMotion };
+};
+
 interface TiltState {
   rotateX: number;
   rotateY: number;
@@ -28,6 +99,8 @@ export const use3DTilt = <T extends HTMLElement>(options: Use3DTiltOptions = {})
   } = options;
 
   const ref = useRef<T>(null);
+  const rafRef = useRef<number | null>(null);
+  const prefersReducedMotion = usePrefersReducedMotion();
   const [tilt, setTilt] = useState<TiltState>({
     rotateX: 0,
     rotateY: 0,
@@ -37,38 +110,48 @@ export const use3DTilt = <T extends HTMLElement>(options: Use3DTiltOptions = {})
   });
   const [isHovered, setIsHovered] = useState(false);
 
+  const isDisabled = disabled || prefersReducedMotion;
+
   const handleMouseMove = useCallback(
     (e: MouseEvent) => {
-      if (!ref.current || disabled) return;
+      if (!ref.current || isDisabled) return;
 
-      const rect = ref.current.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-      const mouseX = e.clientX - centerX;
-      const mouseY = e.clientY - centerY;
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
 
-      const percentX = mouseX / (rect.width / 2);
-      const percentY = mouseY / (rect.height / 2);
+      rafRef.current = requestAnimationFrame(() => {
+        if (!ref.current) return;
 
-      const rotateX = -percentY * maxTilt;
-      const rotateY = percentX * maxTilt;
+        const rect = ref.current.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const mouseX = e.clientX - centerX;
+        const mouseY = e.clientY - centerY;
 
-      setTilt({
-        rotateX,
-        rotateY,
-        scale,
-        x: percentX * 10,
-        y: percentY * 10,
+        const percentX = mouseX / (rect.width / 2);
+        const percentY = mouseY / (rect.height / 2);
+
+        const rotateX = -percentY * maxTilt;
+        const rotateY = percentX * maxTilt;
+
+        setTilt({
+          rotateX,
+          rotateY,
+          scale,
+          x: percentX * 10,
+          y: percentY * 10,
+        });
       });
     },
-    [maxTilt, scale, disabled]
+    [maxTilt, scale, isDisabled]
   );
 
   const handleMouseEnter = useCallback(() => {
-    if (!disabled) {
+    if (!isDisabled) {
       setIsHovered(true);
     }
-  }, [disabled]);
+  }, [isDisabled]);
 
   const handleMouseLeave = useCallback(() => {
     setIsHovered(false);
@@ -83,7 +166,7 @@ export const use3DTilt = <T extends HTMLElement>(options: Use3DTiltOptions = {})
 
   useEffect(() => {
     const element = ref.current;
-    if (!element || disabled) return;
+    if (!element || isDisabled) return;
 
     element.addEventListener('mousemove', handleMouseMove);
     element.addEventListener('mouseenter', handleMouseEnter);
@@ -93,91 +176,93 @@ export const use3DTilt = <T extends HTMLElement>(options: Use3DTiltOptions = {})
       element.removeEventListener('mousemove', handleMouseMove);
       element.removeEventListener('mouseenter', handleMouseEnter);
       element.removeEventListener('mouseleave', handleMouseLeave);
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
     };
-  }, [handleMouseMove, handleMouseEnter, handleMouseLeave, disabled]);
+  }, [handleMouseMove, handleMouseEnter, handleMouseLeave, isDisabled]);
 
-  const style: React.CSSProperties = {
+  const style: React.CSSProperties = isDisabled ? {} : {
     transform: `perspective(${perspective}px) rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg) scale3d(${tilt.scale}, ${tilt.scale}, ${tilt.scale})`,
     transition: isHovered ? `transform ${speed * 0.3}ms ease-out` : `transform ${speed}ms ease-out`,
     transformStyle: 'preserve-3d',
+    willChange: isHovered ? 'transform' : 'auto',
   };
 
-  const glareStyle: React.CSSProperties = glare
+  const glareStyle: React.CSSProperties = glare && !isDisabled
     ? {
         position: 'absolute' as const,
         inset: 0,
         borderRadius: 'inherit',
-        background: `radial-gradient(circle at ${50 + tilt.x * 3}% ${50 + tilt.y * 3}%, rgba(255,255,255,${isHovered ? 0.15 : 0}) 0%, transparent 60%)`,
+        background: `radial-gradient(circle at ${50 + tilt.x * 3}% ${50 + tilt.y * 3}%, rgba(255,255,255,${isHovered ? 0.12 : 0}) 0%, transparent 60%)`,
         pointerEvents: 'none' as const,
         transition: `opacity ${speed}ms ease-out`,
         opacity: isHovered ? 1 : 0,
       }
     : {};
 
-  return { ref, style, glareStyle, tilt, isHovered };
-};
-
-export const useMousePosition = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [normalizedPosition, setNormalizedPosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-      setNormalizedPosition({
-        x: (e.clientX / window.innerWidth) * 2 - 1,
-        y: (e.clientY / window.innerHeight) * 2 - 1,
-      });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  return { mousePosition, normalizedPosition };
+  return { ref, style, glareStyle, tilt, isHovered, isDisabled };
 };
 
 export const useDepthParallax = (intensity: number = 1) => {
-  const { normalizedPosition } = useMousePosition();
+  const { normalizedPosition, prefersReducedMotion } = useMousePosition();
   const [scrollY, setScrollY] = useState(0);
+  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
+    if (prefersReducedMotion) return;
+
     const handleScroll = () => {
-      setScrollY(window.scrollY);
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
+
+      rafRef.current = requestAnimationFrame(() => {
+        setScrollY(window.scrollY);
+      });
     };
+    
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
+    };
+  }, [prefersReducedMotion]);
 
   const getLayerStyle = (depth: number): React.CSSProperties => {
-    const moveX = normalizedPosition.x * depth * intensity * 20;
-    const moveY = normalizedPosition.y * depth * intensity * 20;
-    const scrollMove = scrollY * depth * 0.1;
+    if (prefersReducedMotion) return {};
+
+    const moveX = normalizedPosition.x * depth * intensity * 15;
+    const moveY = normalizedPosition.y * depth * intensity * 15;
+    const scrollMove = scrollY * depth * 0.08;
 
     return {
-      transform: `translate3d(${moveX}px, ${moveY - scrollMove}px, ${depth * 50}px)`,
-      transition: 'transform 0.3s ease-out',
+      transform: `translate3d(${moveX}px, ${moveY - scrollMove}px, ${depth * 30}px)`,
+      transition: 'transform 0.25s ease-out',
+      willChange: 'transform',
     };
   };
 
-  return { getLayerStyle, normalizedPosition, scrollY };
+  return { getLayerStyle, normalizedPosition, scrollY, prefersReducedMotion };
 };
 
 export const use3DCard = <T extends HTMLElement>(options: Use3DTiltOptions = {}) => {
   const tiltHook = use3DTilt<T>(options);
   
-  const cardStyle: React.CSSProperties = {
+  const cardStyle: React.CSSProperties = tiltHook.isDisabled ? {} : {
     ...tiltHook.style,
     boxShadow: tiltHook.isHovered
       ? `
-        0 ${20 + Math.abs(tiltHook.tilt.rotateX)}px ${40 + Math.abs(tiltHook.tilt.rotateX) * 2}px rgba(0, 0, 0, 0.15),
-        0 ${10 + Math.abs(tiltHook.tilt.rotateX) * 0.5}px ${20 + Math.abs(tiltHook.tilt.rotateX)}px rgba(0, 0, 0, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1)
+        0 ${18 + Math.abs(tiltHook.tilt.rotateX) * 0.5}px ${35 + Math.abs(tiltHook.tilt.rotateX)}px rgba(0, 0, 0, 0.12),
+        0 ${8 + Math.abs(tiltHook.tilt.rotateX) * 0.3}px ${16 + Math.abs(tiltHook.tilt.rotateX) * 0.5}px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08)
       `
       : `
-        0 10px 30px rgba(0, 0, 0, 0.1),
-        0 5px 15px rgba(0, 0, 0, 0.05),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05)
+        0 8px 24px rgba(0, 0, 0, 0.08),
+        0 4px 12px rgba(0, 0, 0, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04)
       `,
   };
 
@@ -186,16 +271,28 @@ export const use3DCard = <T extends HTMLElement>(options: Use3DTiltOptions = {})
 
 export const useScrollDepth = () => {
   const [depth, setDepth] = useState(0);
+  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.pageYOffset;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      setDepth(scrollTop / docHeight);
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
+
+      rafRef.current = requestAnimationFrame(() => {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        setDepth(docHeight > 0 ? scrollTop / docHeight : 0);
+      });
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
+    };
   }, []);
 
   return depth;

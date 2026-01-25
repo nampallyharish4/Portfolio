@@ -8,12 +8,15 @@ import Card3D from './Card3D';
 const Hero: React.FC = () => {
   const parallaxOffset = useParallax(0.3);
   const { scrollToElement } = useSmoothScroll();
-  const { normalizedPosition } = useMousePosition();
+  const { normalizedPosition, prefersReducedMotion } = useMousePosition();
 
-  const getParallaxStyle = (depth: number): React.CSSProperties => ({
-    transform: `translate3d(${normalizedPosition.x * depth * 15}px, ${normalizedPosition.y * depth * 15}px, 0)`,
-    transition: 'transform 0.2s ease-out',
-  });
+  const getParallaxStyle = (depth: number): React.CSSProperties => {
+    if (prefersReducedMotion) return {};
+    return {
+      transform: `translate3d(${normalizedPosition.x * depth * 15}px, ${normalizedPosition.y * depth * 15}px, 0)`,
+      transition: 'transform 0.2s ease-out',
+    };
+  };
 
   return (
     <section
