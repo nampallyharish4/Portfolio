@@ -108,7 +108,7 @@
   }
 
   .glass-ultra {
-    @apply backdrop-blur-2xl border transition-all duration-500;
+    @apply backdrop-blur-2xl border rounded-2xl transition-all duration-500;
     background: linear-gradient(
       135deg,
       rgba(255, 255, 255, 0.85) 0%,
@@ -139,7 +139,7 @@
   }
 
   .glass-strong {
-    @apply backdrop-blur-xl border transition-all duration-500;
+    @apply backdrop-blur-xl border rounded-2xl transition-all duration-500;
     background: linear-gradient(
       145deg,
       rgba(255, 255, 255, 0.8) 0%,
@@ -166,7 +166,7 @@
   }
 
   .glass-medium {
-    @apply backdrop-blur-md border transition-all duration-500;
+    @apply backdrop-blur-md border rounded-xl transition-all duration-500;
     background: linear-gradient(
       135deg,
       rgba(255, 255, 255, 0.75) 0%,
@@ -189,7 +189,7 @@
   }
 
   .glass-light {
-    @apply backdrop-blur-sm border transition-all duration-500;
+    @apply backdrop-blur-sm border rounded-xl transition-all duration-500;
     background: rgba(255, 255, 255, 0.6);
     border-color: rgba(148, 163, 184, 0.08);
     box-shadow: 
@@ -204,7 +204,7 @@
   }
 
   .neumorphic {
-    @apply transition-all duration-500;
+    @apply rounded-2xl transition-all duration-500;
     background: linear-gradient(145deg, rgba(255,255,255,0.9), rgba(240,240,245,0.8));
     box-shadow: 
       8px 8px 20px rgba(0, 0, 0, 0.08),
