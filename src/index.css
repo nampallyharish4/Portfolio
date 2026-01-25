@@ -108,19 +108,10 @@
   }
 
   .glass-ultra {
-    @apply backdrop-blur-2xl border rounded-2xl transition-all duration-500;
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.85) 0%,
-      rgba(255, 255, 255, 0.75) 50%,
-      rgba(255, 255, 255, 0.8) 100%
-    );
-    border-color: rgba(148, 163, 184, 0.2);
-    box-shadow: 
-      0 4px 6px -1px rgba(0, 0, 0, 0.05),
-      0 10px 20px -5px rgba(0, 0, 0, 0.08),
-      0 25px 50px -12px rgba(0, 0, 0, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    @apply backdrop-blur-xl border rounded-2xl transition-all duration-500;
+    background: rgba(255, 255, 255, 0.4);
+    border-color: rgba(148, 163, 184, 0.15);
+    box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.06);
   }
 
   .dark .glass-ultra {
@@ -139,17 +130,10 @@
   }
 
   .glass-strong {
-    @apply backdrop-blur-xl border rounded-2xl transition-all duration-500;
-    background: linear-gradient(
-      145deg,
-      rgba(255, 255, 255, 0.8) 0%,
-      rgba(255, 255, 255, 0.7) 100%
-    );
-    border-color: rgba(148, 163, 184, 0.15);
-    box-shadow: 
-      0 4px 6px -1px rgba(0, 0, 0, 0.04),
-      0 10px 25px -8px rgba(0, 0, 0, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    @apply backdrop-blur-lg border rounded-2xl transition-all duration-500;
+    background: rgba(255, 255, 255, 0.35);
+    border-color: rgba(148, 163, 184, 0.12);
+    box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.05);
   }
 
   .dark .glass-strong {
@@ -167,16 +151,9 @@
 
   .glass-medium {
     @apply backdrop-blur-md border rounded-xl transition-all duration-500;
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.75) 0%,
-      rgba(255, 255, 255, 0.65) 100%
-    );
-    border-color: rgba(148, 163, 184, 0.12);
-    box-shadow: 
-      0 2px 4px -1px rgba(0, 0, 0, 0.04),
-      0 8px 20px -8px rgba(0, 0, 0, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(148, 163, 184, 0.1);
+    box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.04);
   }
 
   .dark .glass-medium {
@@ -190,12 +167,9 @@
 
   .glass-light {
     @apply backdrop-blur-sm border rounded-xl transition-all duration-500;
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.25);
     border-color: rgba(148, 163, 184, 0.08);
-    box-shadow: 
-      0 1px 3px rgba(0, 0, 0, 0.03),
-      0 4px 12px -4px rgba(0, 0, 0, 0.06),
-      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    box-shadow: none;
   }
 
   .dark .glass-light {

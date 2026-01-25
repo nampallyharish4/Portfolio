@@ -3,7 +3,6 @@ import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 import { useParallax, useSmoothScroll } from '../hooks/useScrollEffect';
 import { useMousePosition } from '../hooks/use3DEffect';
-import Card3D from './Card3D';
 
 const Hero: React.FC = () => {
   const parallaxOffset = useParallax(0.3);
@@ -61,17 +60,15 @@ const Hero: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 w-full text-center layer-3d">
         <ScrollReveal direction="fade" duration={1200}>
-          <Card3D maxTilt={5} scale={1.05} className="inline-block">
-            <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-ultra mb-8 float-animation">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-500"></span>
-              </span>
-              <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">
-                Available for new projects
-              </span>
-            </div>
-          </Card3D>
+          <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-white/30 dark:bg-gray-800/40 backdrop-blur-md border border-slate-200/30 dark:border-gray-700/30 mb-8 float-animation hover:scale-105 transition-transform">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-500"></span>
+            </span>
+            <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">
+              Available for new projects
+            </span>
+          </div>
         </ScrollReveal>
 
         <ScrollReveal direction="up" delay={200}>
@@ -107,27 +104,23 @@ const Hero: React.FC = () => {
 
         <ScrollReveal direction="up" delay={600}>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-            <Card3D maxTilt={8} scale={1.05} glare={true}>
-              <button
-                onClick={() => scrollToElement('projects', 100)}
-                className="px-8 py-4 rounded-2xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold flex items-center group glow-effect"
-                style={{
-                  boxShadow: '0 15px 35px -10px rgba(0, 0, 0, 0.3), 0 5px 15px -5px rgba(0, 0, 0, 0.2)',
-                }}
-              >
-                View My Work
-                <ArrowDown className="ml-2 w-5 h-5 group-hover:translate-y-1 transition-transform" />
-              </button>
-            </Card3D>
-            <Card3D maxTilt={8} scale={1.05} glare={true}>
-              <button
-                onClick={() => scrollToElement('contact', 100)}
-                className="px-8 py-4 rounded-2xl glass-ultra font-semibold flex items-center depth-hover"
-              >
-                Let's Talk
-                <Mail className="ml-2 w-5 h-5" />
-              </button>
-            </Card3D>
+            <button
+              onClick={() => scrollToElement('projects', 100)}
+              className="px-8 py-4 rounded-2xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold flex items-center group hover:scale-105 transition-transform"
+              style={{
+                boxShadow: '0 8px 24px -8px rgba(0, 0, 0, 0.25)',
+              }}
+            >
+              View My Work
+              <ArrowDown className="ml-2 w-5 h-5 group-hover:translate-y-1 transition-transform" />
+            </button>
+            <button
+              onClick={() => scrollToElement('contact', 100)}
+              className="px-8 py-4 rounded-2xl bg-white/30 dark:bg-gray-800/40 backdrop-blur-md border border-slate-200/30 dark:border-gray-700/30 font-semibold flex items-center hover:scale-105 transition-transform"
+            >
+              Let's Talk
+              <Mail className="ml-2 w-5 h-5" />
+            </button>
           </div>
         </ScrollReveal>
 
