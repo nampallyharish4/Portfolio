@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Sparkles } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import { useSmoothScroll, useActiveSection } from '../hooks/useScrollEffect';
-import Card3D from './Card3D';
 
 const Navigation: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,17 +39,15 @@ const Navigation: React.FC = () => {
         } : {}}
       >
         <div className="flex items-center justify-between h-16 sm:h-20">
-          <Card3D maxTilt={10} scale={1.05}>
-            <button
-              onClick={scrollToTop}
-              className="flex items-center space-x-2 group transition-transform p-2 -m-2"
-            >
-              <Sparkles className="w-6 h-6 text-blue-500 group-hover:rotate-12 transition-transform" />
-              <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
-                NH
-              </span>
-            </button>
-          </Card3D>
+          <button
+            onClick={scrollToTop}
+            className="flex items-center space-x-2 group transition-transform p-2 -m-2 hover:scale-105"
+          >
+            <Sparkles className="w-6 h-6 text-blue-500 group-hover:rotate-12 transition-transform" />
+            <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
+              NH
+            </span>
+          </button>
 
           <div className="hidden md:flex items-center space-x-1">
             {navItems.map((item) => (
@@ -71,23 +68,17 @@ const Navigation: React.FC = () => {
               </button>
             ))}
             <div className="w-px h-6 bg-gray-200 dark:bg-gray-800 mx-2" />
-            <Card3D maxTilt={15} scale={1.1}>
-              <ThemeToggle />
-            </Card3D>
+            <ThemeToggle />
           </div>
 
           <div className="flex items-center space-x-4 md:hidden">
-            <Card3D maxTilt={15} scale={1.1}>
-              <ThemeToggle />
-            </Card3D>
-            <Card3D maxTilt={12} scale={1.08}>
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="p-2 rounded-xl glass-light"
-              >
-                {isOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </Card3D>
+            <ThemeToggle />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 rounded-xl glass-light hover:scale-105 transition-transform"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
         </div>
 
