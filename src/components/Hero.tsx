@@ -147,16 +147,15 @@ const Hero: React.FC = () => {
                 href: 'mailto:nampallyharish5544@gmail.com',
               },
             ].map((social, i) => (
-              <Card3D key={i} maxTilt={15} scale={1.1} depth={15}>
-                <a
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block p-4 rounded-2xl glass-ultra depth-hover"
-                >
-                  {social.icon}
-                </a>
-              </Card3D>
+              <a
+                key={i}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-4 rounded-2xl bg-white/80 dark:bg-gray-800/50 border border-slate-200/50 dark:border-gray-700/30 hover:scale-110 transition-transform"
+              >
+                {social.icon}
+              </a>
             ))}
           </div>
         </ScrollReveal>
