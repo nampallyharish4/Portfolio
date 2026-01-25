@@ -1,6 +1,7 @@
 import React from 'react';
 import { Heart, ArrowUp, Github, Linkedin, Twitter } from 'lucide-react';
 import { useSmoothScroll } from '../hooks/useScrollEffect';
+import Card3D from './Card3D';
 
 const Footer: React.FC = () => {
   const { scrollToTop } = useSmoothScroll();
@@ -17,37 +18,40 @@ const Footer: React.FC = () => {
           </div>
 
           <div className="flex gap-4">
-            <a
-              href="#"
-              className="p-3 rounded-xl glass-light hover:glass-ultra transition-all"
-            >
-              <Github className="w-5 h-5" />
-            </a>
-            <a
-              href="#"
-              className="p-3 rounded-xl glass-light hover:glass-ultra transition-all"
-            >
-              <Linkedin className="w-5 h-5" />
-            </a>
-            <a
-              href="#"
-              className="p-3 rounded-xl glass-light hover:glass-ultra transition-all"
-            >
-              <Twitter className="w-5 h-5" />
-            </a>
+            {[
+              { icon: <Github className="w-5 h-5" />, href: 'https://github.com/nampallyharish4' },
+              { icon: <Linkedin className="w-5 h-5" />, href: 'https://www.linkedin.com/in/nampallyharish4/' },
+              { icon: <Twitter className="w-5 h-5" />, href: '#' },
+            ].map((social, i) => (
+              <Card3D key={i} maxTilt={15} scale={1.1}>
+                <a
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-xl glass-light hover:glass-ultra transition-all block"
+                >
+                  {social.icon}
+                </a>
+              </Card3D>
+            ))}
           </div>
 
-          <button
-            onClick={scrollToTop}
-            className="p-4 rounded-2xl glass-medium hover:glass-ultra transition-all group shadow-xl"
-            aria-label="Scroll to top"
-          >
-            <ArrowUp className="w-6 h-6 group-hover:-translate-y-1 transition-transform" />
-          </button>
+          <Card3D maxTilt={12} scale={1.1}>
+            <button
+              onClick={scrollToTop}
+              className="p-4 rounded-2xl glass-medium hover:glass-ultra transition-all group"
+              style={{
+                boxShadow: '0 10px 25px -8px rgba(0,0,0,0.15)',
+              }}
+              aria-label="Scroll to top"
+            >
+              <ArrowUp className="w-6 h-6 group-hover:-translate-y-1 transition-transform" />
+            </button>
+          </Card3D>
         </div>
 
         <div className="mt-12 pt-8 border-t border-slate-200 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500 font-medium">
-          <p>© 2025 Nampally Harish. All rights reserved.</p>
+          <p>&copy; 2025 Nampally Harish. All rights reserved.</p>
           <p className="flex items-center gap-2">
             Build with <Heart className="w-4 h-4 text-red-500 fill-current" />{' '}
             using React

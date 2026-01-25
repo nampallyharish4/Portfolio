@@ -179,7 +179,7 @@ export const useScrollAnimation = () => {
   const [isScrolling, setIsScrolling] = useState(false);
 
   useEffect(() => {
-    let scrollTimeout: NodeJS.Timeout;
+    let scrollTimeout: ReturnType<typeof setTimeout>;
     let ticking = false;
 
     const handleScroll = () => {
