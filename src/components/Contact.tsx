@@ -71,15 +71,23 @@ const Contact: React.FC = () => {
             <ScrollReveal direction="left" delay={200}>
               <Card3D maxTilt={6} scale={1.02}>
                 <div className="glass-strong p-10 rounded-[2rem] ambient-shadow">
-                  <h3 className="text-3xl font-bold mb-8">Contact Information</h3>
+                  <h3 className="text-3xl font-bold mb-8">
+                    Contact Information
+                  </h3>
                   <div className="space-y-8">
                     {contactInfo.map((info, i) => (
-                      <Card3D key={i} maxTilt={10} scale={1.03} className="block">
+                      <Card3D
+                        key={i}
+                        maxTilt={10}
+                        scale={1.03}
+                        className="block"
+                      >
                         <div className="flex items-center space-x-6 group p-2 -m-2 rounded-xl">
-                          <div 
+                          <div
                             className="p-4 rounded-2xl glass-medium group-hover:glass-ultra transition-all text-blue-500"
                             style={{
-                              boxShadow: '0 8px 20px -8px rgba(59, 130, 246, 0.2)',
+                              boxShadow:
+                                '0 8px 20px -8px rgba(59, 130, 246, 0.2)',
                             }}
                           >
                             {info.icon}
@@ -96,7 +104,9 @@ const Contact: React.FC = () => {
                                 {info.value}
                               </a>
                             ) : (
-                              <p className="text-lg font-medium">{info.value}</p>
+                              <p className="text-lg font-medium">
+                                {info.value}
+                              </p>
                             )}
                           </div>
                         </div>
@@ -110,8 +120,14 @@ const Contact: React.FC = () => {
                     </h4>
                     <div className="flex space-x-4">
                       {[
-                        { icon: <Github className="w-6 h-6" />, href: 'https://github.com/nampallyharish4' },
-                        { icon: <Linkedin className="w-6 h-6" />, href: 'https://www.linkedin.com/in/nampallyharish4/' },
+                        {
+                          icon: <Github className="w-6 h-6" />,
+                          href: 'https://github.com/nampallyharish4',
+                        },
+                        {
+                          icon: <Linkedin className="w-6 h-6" />,
+                          href: 'https://www.linkedin.com/in/nampallyharish4/',
+                        },
                         { icon: <Twitter className="w-6 h-6" />, href: '#' },
                       ].map((social, i) => (
                         <Card3D key={i} maxTilt={15} scale={1.1}>
@@ -133,70 +149,67 @@ const Contact: React.FC = () => {
           </div>
 
           <ScrollReveal direction="right" delay={400}>
-            <form
-              onSubmit={handleSubmit}
-              className="glass-ultra p-10 rounded-[2.5rem] border border-white/10 space-y-6"
-            >
-              <div className="grid sm:grid-cols-2 gap-6">
+            <Card3D maxTilt={6} scale={1.02}>
+              <form
+                onSubmit={handleSubmit}
+                className="glass-ultra p-10 rounded-[2.5rem] border border-white/10 space-y-6"
+              >
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-slate-500 uppercase tracking-widest px-2">
+                      Your Name
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="w-full px-6 py-4 rounded-2xl glass-light border border-white/10 focus:glass-medium outline-none transition-all dark:bg-transparent"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-slate-500 uppercase tracking-widest px-2">
+                      Your Email
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full px-6 py-4 rounded-2xl glass-light border border-white/10 focus:glass-medium outline-none transition-all dark:bg-transparent"
+                    />
+                  </div>
+                </div>
+
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-slate-500 uppercase tracking-widest px-2">
-                    Your Name
+                    Subject
                   </label>
                   <input
                     type="text"
-                    name="name"
+                    name="subject"
                     required
-                    value={formData.name}
+                    value={formData.subject}
                     onChange={handleChange}
                     className="w-full px-6 py-4 rounded-2xl glass-light border border-white/10 focus:glass-medium outline-none transition-all dark:bg-transparent"
-                    placeholder="John Doe"
                   />
                 </div>
+
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-slate-500 uppercase tracking-widest px-2">
-                    Your Email
+                    Message
                   </label>
-                  <input
-                    type="email"
-                    name="email"
+                  <textarea
+                    name="message"
                     required
-                    value={formData.email}
+                    rows={5}
+                    value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-6 py-4 rounded-2xl glass-light border border-white/10 focus:glass-medium outline-none transition-all dark:bg-transparent"
-                    placeholder="john@example.com"
+                    className="w-full px-6 py-4 rounded-2xl glass-light border border-white/10 focus:glass-medium outline-none transition-all resize-none dark:bg-transparent"
                   />
                 </div>
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-sm font-bold text-slate-500 uppercase tracking-widest px-2">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  name="subject"
-                  required
-                  value={formData.subject}
-                  onChange={handleChange}
-                  className="w-full px-6 py-4 rounded-2xl glass-light border border-white/10 focus:glass-medium outline-none transition-all dark:bg-transparent"
-                  placeholder="Project Inquiry"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-sm font-bold text-slate-500 uppercase tracking-widest px-2">
-                  Message
-                </label>
-                <textarea
-                  name="message"
-                  required
-                  rows={5}
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="w-full px-6 py-4 rounded-2xl glass-light border border-white/10 focus:glass-medium outline-none transition-all resize-none dark:bg-transparent"
-                  placeholder="Hey, let's work together!"
-                />
-              </div>
 
                 <Card3D maxTilt={6} scale={1.02} className="w-full">
                   <button
