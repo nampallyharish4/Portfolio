@@ -64,67 +64,24 @@ export const useParallax = (speed: number = 0.5) => {
 
 export const useSmoothScroll = () => {
   const scrollToElement = useCallback((elementId: string, offset: number = 0) => {
-    console.log('🎯 Attempting to scroll to:', elementId);
-    
     const element = document.getElementById(elementId);
-    if (!element) {
-      console.error('❌ Element not found:', elementId);
-      console.log('Available elements:', Array.from(document.querySelectorAll('[id]')).map(el => el.id));
-      return;
-    }
+    if (!element) return;
 
-    console.log('✅ Element found, initiating smooth scroll...');
-    
-    // Get the element's position relative to the document
-    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-    
-    // For section titles, we want to find the actual title element within the section
-    let titleElement = null;
-    
-    // Look for the section title (h2 element) within the section
-    const titleSelectors = [
-      'h2', // Main section titles
-      '.section-heading-light h2', // Specific title containers
-      '[class*="section-heading"] h2',
-      '.glass-medium h2'
-    ];
-    
-    for (const selector of titleSelectors) {
-      titleElement = element.querySelector(selector);
-      if (titleElement) break;
-    }
-    
-    let targetPosition;
-    
-    if (titleElement) {
-      // If we found a title element, scroll to it specifically
-      const titlePosition = titleElement.getBoundingClientRect().top + window.pageYOffset;
-      targetPosition = titlePosition - offset;
-      console.log('📍 Found section title, scrolling to title position:', titlePosition);
-    } else {
-      // Fallback to section position
-      targetPosition = elementPosition - offset;
-      console.log('📍 No title found, scrolling to section position:', elementPosition);
-    }
+    const elementRect = element.getBoundingClientRect();
+    const absoluteTop = elementRect.top + window.pageYOffset;
+    const targetPosition = absoluteTop - offset;
 
-    // Use native smooth scrolling for better performance and reliability
     window.scrollTo({
       top: targetPosition,
       behavior: 'smooth'
     });
-
-    console.log('🎉 Scroll initiated to position:', targetPosition);
   }, []);
 
   const scrollToTop = useCallback(() => {
-    console.log('🔝 Scrolling to top...');
-    
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
-
-    console.log('🎉 Scroll to top initiated');
   }, []);
 
   return { scrollToElement, scrollToTop };
@@ -151,7 +108,6 @@ export const useActiveSection = () => {
               
               if (scrollPosition >= sectionTop - 300 && scrollPosition < sectionBottom - 100) {
                 if (activeSection !== sections[i]) {
-                  console.log('📍 Active section changed to:', sections[i]);
                   setActiveSection(sections[i]);
                 }
                 break;
@@ -179,7 +135,7 @@ export const useScrollAnimation = () => {
   const [isScrolling, setIsScrolling] = useState(false);
 
   useEffect(() => {
-    let scrollTimeout: NodeJS.Timeout;
+    let scrollTimeout: ReturnType<typeof setTimeout>;
     let ticking = false;
 
     const handleScroll = () => {
