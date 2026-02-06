@@ -21,13 +21,13 @@ const Contact: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const mailtoUrl = `mailto:nampallyharish5544@gmail.com?subject=${encodeURIComponent(
-      formData.subject
+      formData.subject,
     )} (From ${formData.name})&body=${encodeURIComponent(formData.message)}`;
     window.open(mailtoUrl, '_blank');
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -143,7 +143,6 @@ const Contact: React.FC = () => {
                     value={formData.name}
                     onChange={handleChange}
                     className="w-full px-6 py-4 rounded-2xl glass-light border border-white/10 focus:glass-medium outline-none transition-all dark:bg-transparent"
-                    placeholder="John Doe"
                   />
                 </div>
                 <div className="space-y-2">
@@ -157,7 +156,6 @@ const Contact: React.FC = () => {
                     value={formData.email}
                     onChange={handleChange}
                     className="w-full px-6 py-4 rounded-2xl glass-light border border-white/10 focus:glass-medium outline-none transition-all dark:bg-transparent"
-                    placeholder="john@example.com"
                   />
                 </div>
               </div>
@@ -173,7 +171,6 @@ const Contact: React.FC = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   className="w-full px-6 py-4 rounded-2xl glass-light border border-white/10 focus:glass-medium outline-none transition-all dark:bg-transparent"
-                  placeholder="Project Inquiry"
                 />
               </div>
 
@@ -188,7 +185,6 @@ const Contact: React.FC = () => {
                   value={formData.message}
                   onChange={handleChange}
                   className="w-full px-6 py-4 rounded-2xl glass-light border border-white/10 focus:glass-medium outline-none transition-all resize-none dark:bg-transparent"
-                  placeholder="Hey, let's work together!"
                 />
               </div>
 
