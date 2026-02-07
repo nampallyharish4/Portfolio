@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="py-12 relative overflow-hidden border-t border-white/5 bg-slate-50 dark:bg-slate-950 transition-colors">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-8 sm:px-12 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="text-center md:text-left">
             <h3 className="text-2xl font-bold mb-2">Nampally Harish</h3>

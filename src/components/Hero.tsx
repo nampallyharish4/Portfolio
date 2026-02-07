@@ -62,7 +62,7 @@ const Hero: React.FC = () => {
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full text-center layer-3d">
+      <div className="max-w-7xl mx-auto px-8 sm:px-12 relative z-10 w-full text-center layer-3d">
         <ScrollReveal direction="fade" duration={1200}>
           <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-white/30 dark:bg-gray-800/40 backdrop-blur-md border border-slate-200/30 dark:border-gray-700/30 mb-8 float-animation hover:scale-105 transition-transform">
             <span className="relative flex h-2.5 w-2.5">

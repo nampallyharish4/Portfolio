@@ -63,7 +63,7 @@ const Contact: React.FC = () => {
 
   return (
     <section id="contact" className="py-24 relative overflow-hidden scene-3d">
-      <div className="max-w-7xl mx-auto px-6 relative z-10 layer-3d">
+      <div className="max-w-7xl mx-auto px-8 sm:px-12 relative z-10 layer-3d">
         <ScrollReveal direction="up">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-slate-900 to-slate-500 dark:from-white dark:to-slate-400 bg-clip-text text-transparent inline-block font-sans">
