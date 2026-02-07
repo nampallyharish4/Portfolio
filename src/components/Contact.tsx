@@ -1,13 +1,5 @@
 import React, { useState } from 'react';
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Send,
-  Github,
-  Linkedin,
-  Twitter,
-} from 'lucide-react';
+import { Phone, MapPin, Send } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 import Card3D from './Card3D';
 
@@ -21,10 +13,11 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const mailtoUrl = `mailto:nampallyharish5544@gmail.com?subject=${encodeURIComponent(
+    const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=nampallyharish5544@gmail.com&su=${encodeURIComponent(
       formData.subject,
-    )} (From ${formData.name})&body=${encodeURIComponent(formData.message)}`;
-    window.open(mailtoUrl, '_blank');
+    )}&body=${encodeURIComponent(body)}`;
+    window.open(gmailUrl, '_blank');
   };
 
   const handleChange = (
@@ -36,19 +29,33 @@ const Contact: React.FC = () => {
 
   const contactInfo = [
     {
-      icon: <Mail className="w-6 h-6" />,
+      icon: (
+        <img
+          src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
+          className="w-6 h-6"
+          alt="Email"
+        />
+      ),
       label: 'Email',
       value: 'nampallyharish5544@gmail.com',
       href: 'mailto:nampallyharish5544@gmail.com',
     },
     {
-      icon: <Phone className="w-6 h-6" />,
+      icon: (
+        <div className="w-6 h-6 flex items-center justify-center bg-emerald-500 rounded-lg shadow-sm">
+          <Phone className="w-4 h-4 text-white" />
+        </div>
+      ),
       label: 'Phone',
       value: '+91 8187033652',
       href: 'tel:+918187033652',
     },
     {
-      icon: <MapPin className="w-6 h-6" />,
+      icon: (
+        <div className="w-6 h-6 flex items-center justify-center bg-rose-500 rounded-lg shadow-sm">
+          <MapPin className="w-4 h-4 text-white" />
+        </div>
+      ),
       label: 'Location',
       value: 'Hyderabad, India',
     },
@@ -69,7 +76,7 @@ const Contact: React.FC = () => {
         <div className="grid lg:grid-cols-2 gap-16">
           <div className="space-y-8">
             <ScrollReveal direction="left" delay={200}>
-              <Card3D maxTilt={6} scale={1.02}>
+              <Card3D maxTilt={6} scale={1.02} className="rounded-[2rem]">
                 <div className="glass-strong p-10 rounded-[2rem] ambient-shadow">
                   <h3 className="text-3xl font-bold mb-8">
                     Contact Information
@@ -80,17 +87,20 @@ const Contact: React.FC = () => {
                         key={i}
                         maxTilt={10}
                         scale={1.03}
-                        className="block"
+                        className="block rounded-xl"
                       >
                         <div className="flex items-center space-x-6 group p-2 -m-2 rounded-xl">
                           <div
-                            className="p-4 rounded-2xl glass-medium group-hover:glass-ultra transition-all text-blue-500"
+                            className="w-12 h-12 flex items-center justify-center rounded-2xl glass-medium group-hover:glass-ultra transition-all text-blue-500"
                             style={{
                               boxShadow:
                                 '0 8px 20px -8px rgba(59, 130, 246, 0.2)',
                             }}
                           >
-                            {info.icon}
+                            {React.cloneElement(
+                              info.icon as React.ReactElement,
+                              { size: 20 },
+                            )}
                           </div>
                           <div>
                             <p className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-1">
@@ -121,21 +131,47 @@ const Contact: React.FC = () => {
                     <div className="flex space-x-4">
                       {[
                         {
-                          icon: <Github className="w-6 h-6" />,
+                          icon: (
+                            <img
+                              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                              className="w-6 h-6 dark:invert"
+                              alt="Github"
+                            />
+                          ),
                           href: 'https://github.com/nampallyharish4',
                         },
                         {
-                          icon: <Linkedin className="w-6 h-6" />,
+                          icon: (
+                            <img
+                              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
+                              className="w-6 h-6"
+                              alt="Linkedin"
+                            />
+                          ),
                           href: 'https://www.linkedin.com/in/nampallyharish4/',
                         },
-                        { icon: <Twitter className="w-6 h-6" />, href: '#' },
+                        {
+                          icon: (
+                            <img
+                              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/twitter/twitter-original.svg"
+                              className="w-6 h-6"
+                              alt="Twitter"
+                            />
+                          ),
+                          href: '#',
+                        },
                       ].map((social, i) => (
-                        <Card3D key={i} maxTilt={15} scale={1.1}>
+                        <Card3D
+                          key={i}
+                          maxTilt={15}
+                          scale={1.1}
+                          className="rounded-xl"
+                        >
                           <a
                             href={social.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-4 rounded-xl glass-light hover:glass-ultra transition-all block"
+                            className="w-12 h-12 flex items-center justify-center rounded-xl glass-light hover:glass-ultra transition-all block overflow-hidden"
                           >
                             {social.icon}
                           </a>
@@ -149,7 +185,7 @@ const Contact: React.FC = () => {
           </div>
 
           <ScrollReveal direction="right" delay={400}>
-            <Card3D maxTilt={6} scale={1.02}>
+            <Card3D maxTilt={6} scale={1.02} className="rounded-[2.5rem]">
               <form
                 onSubmit={handleSubmit}
                 className="glass-ultra p-10 rounded-[2.5rem] border border-white/10 space-y-6"
@@ -211,7 +247,7 @@ const Contact: React.FC = () => {
                   />
                 </div>
 
-                <Card3D maxTilt={6} scale={1.02} className="w-full">
+                <Card3D maxTilt={6} scale={1.02} className="w-full rounded-2xl">
                   <button
                     type="submit"
                     className="w-full py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl font-bold text-lg flex justify-center items-center gap-2 transition-all glow-effect"

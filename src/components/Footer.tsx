@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, ArrowUp, Github, Linkedin, Twitter } from 'lucide-react';
+import { Heart, ArrowUp } from 'lucide-react';
 import { useSmoothScroll } from '../hooks/useScrollEffect';
 import Card3D from './Card3D';
 
@@ -19,16 +19,43 @@ const Footer: React.FC = () => {
 
           <div className="flex gap-4">
             {[
-              { icon: <Github className="w-5 h-5" />, href: 'https://github.com/nampallyharish4' },
-              { icon: <Linkedin className="w-5 h-5" />, href: 'https://www.linkedin.com/in/nampallyharish4/' },
-              { icon: <Twitter className="w-5 h-5" />, href: '#' },
+              {
+                icon: (
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                    className="w-5 h-5 dark:invert"
+                    alt="Github"
+                  />
+                ),
+                href: 'https://github.com/nampallyharish4',
+              },
+              {
+                icon: (
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
+                    className="w-5 h-5"
+                    alt="Linkedin"
+                  />
+                ),
+                href: 'https://www.linkedin.com/in/nampallyharish4/',
+              },
+              {
+                icon: (
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/twitter/twitter-original.svg"
+                    className="w-5 h-5"
+                    alt="Twitter"
+                  />
+                ),
+                href: '#',
+              },
             ].map((social, i) => (
-              <Card3D key={i} maxTilt={15} scale={1.1}>
+              <Card3D key={i} maxTilt={15} scale={1.1} className="rounded-xl">
                 <a
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 rounded-xl glass-light hover:glass-ultra transition-all block"
+                  className="w-11 h-11 flex items-center justify-center rounded-xl glass-light hover:glass-ultra transition-all block overflow-hidden"
                 >
                   {social.icon}
                 </a>
@@ -36,7 +63,7 @@ const Footer: React.FC = () => {
             ))}
           </div>
 
-          <Card3D maxTilt={12} scale={1.1}>
+          <Card3D maxTilt={12} scale={1.1} className="rounded-2xl">
             <button
               onClick={scrollToTop}
               className="p-4 rounded-2xl glass-medium hover:glass-ultra transition-all group"

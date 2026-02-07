@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowDown, Mail } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 import { useParallax, useSmoothScroll } from '../hooks/useScrollEffect';
 import { useMousePosition } from '../hooks/use3DEffect';
@@ -27,7 +27,8 @@ const Hero: React.FC = () => {
       <div
         className="absolute top-[-10%] left-[-10%] w-[45%] h-[45%] rounded-full blur-[140px] opacity-60 parallax-layer"
         style={{
-          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, rgba(59, 130, 246, 0.1) 70%, transparent 100%)',
+          background:
+            'radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, rgba(59, 130, 246, 0.1) 70%, transparent 100%)',
           ...getParallaxStyle(0.8),
           transform: `${getParallaxStyle(0.8).transform} translateY(${parallaxOffset * 0.3}px)`,
         }}
@@ -35,7 +36,8 @@ const Hero: React.FC = () => {
       <div
         className="absolute bottom-[-10%] right-[-10%] w-[45%] h-[45%] rounded-full blur-[140px] opacity-60 parallax-layer"
         style={{
-          background: 'radial-gradient(circle, rgba(147, 51, 234, 0.3) 0%, rgba(147, 51, 234, 0.1) 70%, transparent 100%)',
+          background:
+            'radial-gradient(circle, rgba(147, 51, 234, 0.3) 0%, rgba(147, 51, 234, 0.1) 70%, transparent 100%)',
           ...getParallaxStyle(0.5),
           transform: `${getParallaxStyle(0.5).transform} translateY(${parallaxOffset * -0.3}px)`,
         }}
@@ -44,7 +46,8 @@ const Hero: React.FC = () => {
       <div
         className="absolute top-[20%] right-[15%] w-32 h-32 rounded-full opacity-30 parallax-layer"
         style={{
-          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, transparent 70%)',
+          background:
+            'radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, transparent 70%)',
           filter: 'blur(40px)',
           ...getParallaxStyle(1.2),
         }}
@@ -52,7 +55,8 @@ const Hero: React.FC = () => {
       <div
         className="absolute bottom-[30%] left-[10%] w-24 h-24 rounded-full opacity-25 parallax-layer"
         style={{
-          background: 'radial-gradient(circle, rgba(147, 51, 234, 0.4) 0%, transparent 70%)',
+          background:
+            'radial-gradient(circle, rgba(147, 51, 234, 0.4) 0%, transparent 70%)',
           filter: 'blur(30px)',
           ...getParallaxStyle(1.5),
         }}
@@ -74,7 +78,7 @@ const Hero: React.FC = () => {
         <ScrollReveal direction="up" delay={200}>
           <div style={getParallaxStyle(0.2)}>
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight mb-6">
-              <span 
+              <span
                 className="bg-gradient-to-r from-slate-900 via-blue-600 to-slate-900 dark:from-white dark:via-blue-400 dark:to-white bg-clip-text text-transparent"
                 style={{
                   textShadow: '0 20px 40px rgba(0,0,0,0.1)',
@@ -87,7 +91,10 @@ const Hero: React.FC = () => {
         </ScrollReveal>
 
         <ScrollReveal direction="up" delay={400}>
-          <div className="max-w-3xl mx-auto mb-12" style={getParallaxStyle(0.15)}>
+          <div
+            className="max-w-3xl mx-auto mb-12"
+            style={getParallaxStyle(0.15)}
+          >
             <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 font-light leading-relaxed">
               Crafting{' '}
               <span className="text-slate-900 dark:text-white font-medium">
@@ -128,15 +135,33 @@ const Hero: React.FC = () => {
           <div className="flex justify-center space-x-6">
             {[
               {
-                icon: <Github className="w-6 h-6" />,
+                icon: (
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                    className="w-6 h-6 dark:invert"
+                    alt="GitHub"
+                  />
+                ),
                 href: 'https://github.com/nampallyharish4',
               },
               {
-                icon: <Linkedin className="w-6 h-6" />,
+                icon: (
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
+                    className="w-6 h-6"
+                    alt="LinkedIn"
+                  />
+                ),
                 href: 'https://www.linkedin.com/in/nampallyharish4/',
               },
               {
-                icon: <Mail className="w-6 h-6" />,
+                icon: (
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
+                    className="w-6 h-6"
+                    alt="Email"
+                  />
+                ),
                 href: 'mailto:nampallyharish5544@gmail.com',
               },
             ].map((social, i) => (

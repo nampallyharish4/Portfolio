@@ -25,18 +25,25 @@ const Navigation: React.FC = () => {
   ];
 
   return (
-    <nav 
+    <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-4 ${
         scrolled ? 'px-4 sm:px-6' : 'px-6'
       }`}
     >
-      <div 
+      <div
         className={`max-w-5xl mx-auto transition-all duration-500 overflow-hidden ${
-          scrolled ? 'glass-ultra rounded-3xl px-6' : 'bg-transparent px-0'
+          scrolled || isOpen
+            ? 'glass-ultra rounded-[2rem] px-8 shadow-lg'
+            : 'bg-transparent px-0'
         }`}
-        style={scrolled ? {
-          boxShadow: '0 20px 40px -15px rgba(0,0,0,0.15), 0 8px 20px -10px rgba(0,0,0,0.1)',
-        } : {}}
+        style={
+          scrolled
+            ? {
+                boxShadow:
+                  '0 20px 40px -15px rgba(0,0,0,0.15), 0 8px 20px -10px rgba(0,0,0,0.1)',
+              }
+            : {}
+        }
       >
         <div className="flex items-center justify-between h-16 sm:h-20">
           <button
@@ -54,9 +61,9 @@ const Navigation: React.FC = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToElement(item.id, 100)}
-                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 relative group hover:scale-105 ${
-                  activeSection === item.id 
-                    ? 'text-blue-600 dark:text-blue-400' 
+                className={`px-4 py-2 rounded-2xl text-sm font-medium transition-all duration-300 relative group hover:scale-105 ${
+                  activeSection === item.id
+                    ? 'text-blue-600 dark:text-blue-400'
                     : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
                 }`}
               >
@@ -64,7 +71,7 @@ const Navigation: React.FC = () => {
                 {activeSection === item.id && (
                   <div className="absolute bottom-1 left-4 right-4 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full" />
                 )}
-                <div className="absolute inset-0 glass-light opacity-0 group-hover:opacity-100 rounded-xl transition-opacity -z-10" />
+                <div className="absolute inset-0 glass-light opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity -z-10" />
               </button>
             ))}
             <div className="w-px h-6 bg-gray-200 dark:bg-gray-800 mx-2" />
@@ -75,16 +82,18 @@ const Navigation: React.FC = () => {
             <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-xl glass-light hover:scale-105 transition-transform"
+              className="p-2 rounded-2xl glass-light hover:scale-105 transition-transform"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
 
-        <div 
+        <div
           className={`md:hidden transition-all duration-500 ${
-            isOpen ? 'max-h-64 opacity-100 py-6' : 'max-h-0 opacity-0 overflow-hidden'
+            isOpen
+              ? 'max-h-64 opacity-100 py-6'
+              : 'max-h-0 opacity-0 overflow-hidden'
           }`}
         >
           <div className="flex flex-col space-y-2">
@@ -95,14 +104,18 @@ const Navigation: React.FC = () => {
                   scrollToElement(item.id, 80);
                   setIsOpen(false);
                 }}
-                className={`px-4 py-3 rounded-xl text-left font-medium transition-all ${
-                  activeSection === item.id 
-                    ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white' 
+                className={`px-4 py-3 rounded-2xl text-left font-medium transition-all ${
+                  activeSection === item.id
+                    ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white'
                     : 'glass-light hover:glass-medium text-gray-700 dark:text-gray-200'
                 }`}
-                style={activeSection === item.id ? {
-                  boxShadow: '0 10px 25px -8px rgba(59, 130, 246, 0.4)',
-                } : {}}
+                style={
+                  activeSection === item.id
+                    ? {
+                        boxShadow: '0 10px 25px -8px rgba(59, 130, 246, 0.4)',
+                      }
+                    : {}
+                }
               >
                 {item.label}
               </button>

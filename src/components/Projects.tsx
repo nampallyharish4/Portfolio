@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import { Project } from '../types';
 import ScrollReveal from './ScrollReveal';
 import Card3D from './Card3D';
@@ -76,7 +76,12 @@ const Projects: React.FC = () => {
         <ScrollReveal direction="up" delay={200}>
           <div className="flex flex-wrap justify-center gap-4 mb-20">
             {categories.map((cat) => (
-              <Card3D key={cat} maxTilt={10} scale={1.05}>
+              <Card3D
+                key={cat}
+                maxTilt={10}
+                scale={1.05}
+                className="rounded-2xl"
+              >
                 <button
                   onClick={() => setSelectedCategory(cat)}
                   className={`px-8 py-3 rounded-2xl font-bold transition-all ${
@@ -86,7 +91,10 @@ const Projects: React.FC = () => {
                   }`}
                   style={
                     selectedCategory === cat
-                      ? { boxShadow: '0 15px 30px -10px rgba(59, 130, 246, 0.4)' }
+                      ? {
+                          boxShadow:
+                            '0 15px 30px -10px rgba(59, 130, 246, 0.4)',
+                        }
                       : {}
                   }
                 >
@@ -100,7 +108,12 @@ const Projects: React.FC = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project, i) => (
             <ScrollReveal key={project.id} direction="up" delay={300 + i * 100}>
-              <Card3D maxTilt={8} scale={1.02} depth={30}>
+              <Card3D
+                maxTilt={8}
+                scale={1.02}
+                depth={30}
+                className="rounded-3xl h-full"
+              >
                 <div className="glass-ultra rounded-3xl overflow-hidden group flex flex-col h-full ambient-shadow">
                   <div className="h-64 overflow-hidden relative">
                     <img
@@ -109,7 +122,11 @@ const Projects: React.FC = () => {
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
-                    <Card3D maxTilt={15} scale={1.1} className="absolute top-4 right-4">
+                    <Card3D
+                      maxTilt={15}
+                      scale={1.1}
+                      className="absolute top-4 right-4 rounded-xl"
+                    >
                       <div className="glass-ultra px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-widest">
                         {project.category}
                       </div>
@@ -136,17 +153,29 @@ const Projects: React.FC = () => {
                     </div>
 
                     <div className="mt-auto flex gap-4">
-                      <Card3D maxTilt={12} scale={1.08} className="flex-1">
+                      <Card3D
+                        maxTilt={12}
+                        scale={1.08}
+                        className="flex-1 rounded-2xl"
+                      >
                         <a
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="glass-medium hover:glass-ultra p-4 rounded-2xl flex justify-center items-center group/btn block"
                         >
-                          <Github className="w-5 h-5 group-hover/btn:scale-110 transition-transform" />
+                          <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                            className="w-5 h-5 dark:invert group-hover/btn:scale-110 transition-transform"
+                            alt="GitHub"
+                          />
                         </a>
                       </Card3D>
-                      <Card3D maxTilt={8} scale={1.05} className="flex-[3]">
+                      <Card3D
+                        maxTilt={8}
+                        scale={1.05}
+                        className="flex-[3] rounded-2xl text-white"
+                      >
                         <a
                           href={project.liveUrl}
                           target="_blank"

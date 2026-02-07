@@ -56,16 +56,21 @@ const About: React.FC = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <ScrollReveal direction="left" delay={200}>
-            <Card3D maxTilt={8} scale={1.02} className="max-w-sm mx-auto lg:mx-0">
+            <Card3D
+              maxTilt={8}
+              scale={1.02}
+              className="max-w-sm mx-auto lg:mx-0 rounded-[1.5rem]"
+            >
               <div className="relative group">
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-[2rem] blur-lg opacity-20 group-hover:opacity-40 transition duration-700" />
 
                 <div className="relative glass-ultra rounded-[1.5rem] p-6 flex flex-col items-center overflow-hidden ambient-shadow">
-                  <div 
+                  <div
                     className="relative w-3/5 aspect-square rounded-full border-4 overflow-hidden mb-6 mx-auto"
                     style={{
                       borderColor: 'rgba(255,255,255,0.2)',
-                      boxShadow: '0 15px 35px -10px rgba(0,0,0,0.2), inset 0 -5px 20px rgba(0,0,0,0.1)',
+                      boxShadow:
+                        '0 15px 35px -10px rgba(0,0,0,0.2), inset 0 -5px 20px rgba(0,0,0,0.1)',
                     }}
                   >
                     <img
@@ -79,23 +84,20 @@ const About: React.FC = () => {
                   <div className="w-full text-center">
                     <h3 className="text-2xl font-bold mb-1">Nampally Harish</h3>
                     <p className="text-blue-600 dark:text-blue-400 font-medium text-sm mb-6 uppercase tracking-widest">
-                      Full-Stack Architect
+                      Full-Stack Developer
                     </p>
 
-                    <div className="grid grid-cols-2 gap-3 mb-6">
-                      <Card3D maxTilt={10} scale={1.05} depth={10}>
+                    <div className="mb-6">
+                      <Card3D
+                        maxTilt={10}
+                        scale={1.05}
+                        depth={10}
+                        className="rounded-xl"
+                      >
                         <div className="glass-medium py-3 px-2 rounded-xl">
                           <span className="block text-xl font-bold">15+</span>
                           <span className="text-[9px] text-slate-500 uppercase tracking-tighter font-bold">
                             Projects
-                          </span>
-                        </div>
-                      </Card3D>
-                      <Card3D maxTilt={10} scale={1.05} depth={10}>
-                        <div className="glass-medium py-3 px-2 rounded-xl">
-                          <span className="block text-xl font-bold">3+</span>
-                          <span className="text-[9px] text-slate-500 uppercase tracking-tighter font-bold">
-                            Success
                           </span>
                         </div>
                       </Card3D>
@@ -104,24 +106,47 @@ const About: React.FC = () => {
                     <div className="flex gap-2 w-full justify-center">
                       {[
                         {
-                          icon: <Code size={18} />,
+                          icon: (
+                            <img
+                              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                              className="w-5 h-5 dark:invert"
+                              alt="Github"
+                            />
+                          ),
                           href: 'https://github.com/nampallyharish4',
                         },
                         {
-                          icon: <Users size={18} />,
+                          icon: (
+                            <img
+                              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
+                              className="w-5 h-5 house-fill"
+                              alt="Linkedin"
+                            />
+                          ),
                           href: 'https://www.linkedin.com/in/nampallyharish4/',
                         },
                         {
-                          icon: <Zap size={18} />,
+                          icon: (
+                            <img
+                              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
+                              className="w-5 h-5"
+                              alt="Gmail"
+                            />
+                          ),
                           href: 'mailto:nampallyharish5544@gmail.com',
                         },
                       ].map((item, i) => (
-                        <Card3D key={i} maxTilt={12} scale={1.1}>
+                        <Card3D
+                          key={i}
+                          maxTilt={12}
+                          scale={1.1}
+                          className="rounded-lg"
+                        >
                           <a
                             href={item.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-2.5 rounded-lg glass-medium hover:glass-ultra hover:text-blue-500 transition-all block"
+                            className="w-11 h-11 flex items-center justify-center rounded-lg glass-medium hover:glass-ultra transition-all block overflow-hidden"
                           >
                             {item.icon}
                           </a>
@@ -136,20 +161,24 @@ const About: React.FC = () => {
 
           <div className="space-y-6">
             <ScrollReveal direction="right" delay={400}>
-              <Card3D maxTilt={5} scale={1.01}>
+              <Card3D maxTilt={5} scale={1.01} className="rounded-2xl">
                 <div className="glass-strong p-6 rounded-2xl ambient-shadow">
-                  <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-4 font-light">
-                    I am a passionate{' '}
+                  <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-4 font-light">
+                    I am a Passionate{' '}
                     <span className="text-slate-900 dark:text-white font-medium">
                       Full-Stack Developer
                     </span>{' '}
-                    based in Hyderabad. My work bridges the gap between complex
-                    engineering and elegant design.
+                    on a mission to build digital bridges between complex
+                    engineering and human-centric design. I don't just write
+                    code; I weave performance and aesthetics into scalable
+                    ecosystems.
                   </p>
                   <p className="text-base text-slate-600 dark:text-slate-400 leading-relaxed font-light">
-                    I specialize in scalable web applications with clean code.
-                    Whether it's backend logic or frontend aesthetics, I aim for
-                    excellence.
+                    From the precision of backend logic to the fluidity of
+                    modern interfaces, I specialize in turning complex
+                    challenges into seamless digital experiences. Every project
+                    is a canvas where I blend high-performance engineering with
+                    creative innovation.
                   </p>
                 </div>
               </Card3D>
@@ -158,14 +187,21 @@ const About: React.FC = () => {
             <div className="grid grid-cols-2 gap-3">
               {keyHighlights.map((item, i) => (
                 <ScrollReveal key={i} direction="up" delay={500 + i * 75}>
-                  <Card3D maxTilt={12} scale={1.03} depth={15}>
-                    <div 
+                  <Card3D
+                    maxTilt={12}
+                    scale={1.03}
+                    depth={15}
+                    className="rounded-xl h-full"
+                  >
+                    <div
                       className="glass-medium p-4 rounded-xl flex items-start space-x-3 cursor-default h-full"
                       style={{
                         background: `linear-gradient(135deg, ${item.gradient.split(' ')[0].replace('from-', '')} 0%, transparent 100%)`,
                       }}
                     >
-                      <div className={`${item.color} p-2 rounded-lg glass-light shrink-0`}>
+                      <div
+                        className={`${item.color} p-2 rounded-lg glass-light shrink-0`}
+                      >
                         {React.cloneElement(item.icon as React.ReactElement, {
                           size: 18,
                         })}
@@ -183,7 +219,7 @@ const About: React.FC = () => {
             </div>
 
             <ScrollReveal direction="up" delay={800}>
-              <Card3D maxTilt={6} scale={1.03}>
+              <Card3D maxTilt={6} scale={1.03} className="rounded-xl">
                 <button
                   onClick={() => scrollToElement('contact', 100)}
                   className="px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-bold text-base glow-effect"
