@@ -1,5 +1,5 @@
 import React from 'react';
-import { Code, Database, Cloud, Zap } from 'lucide-react';
+import {} from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 import Card3D from './Card3D';
 
@@ -154,7 +154,7 @@ const TechnicalSkills: React.FC = () => {
 
         <ScrollReveal direction="up" delay={800}>
           <Card3D maxTilt={4} scale={1.01} className="mt-20 rounded-[2rem]">
-            <div className="glass-strong p-10 rounded-[2rem] text-center ambient-shadow">
+            <div className="glass-strong p-6 sm:p-10 rounded-[2rem] text-center ambient-shadow">
               <h3 className="text-xl font-bold mb-8 text-slate-500 uppercase tracking-widest">
                 Additional Skills
               </h3>

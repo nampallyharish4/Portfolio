@@ -92,7 +92,7 @@ const Navigation: React.FC = () => {
         <div
           className={`md:hidden transition-all duration-500 ${
             isOpen
-              ? 'max-h-64 opacity-100 py-6'
+              ? 'max-h-[30rem] opacity-100 py-6 pb-12'
               : 'max-h-0 opacity-0 overflow-hidden'
           }`}
         >

@@ -77,9 +77,9 @@ const Hero: React.FC = () => {
 
         <ScrollReveal direction="up" delay={200}>
           <div style={getParallaxStyle(0.2)}>
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight mb-6">
+            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight mb-6">
               <span
-                className="bg-gradient-to-r from-slate-900 via-blue-600 to-slate-900 dark:from-white dark:via-blue-400 dark:to-white bg-clip-text text-transparent"
+                className="bg-gradient-to-r from-slate-900 via-blue-600 to-slate-900 dark:from-white dark:via-blue-400 dark:to-white bg-clip-text text-transparent px-4 sm:px-0"
                 style={{
                   textShadow: '0 20px 40px rgba(0,0,0,0.1)',
                 }}
@@ -92,10 +92,10 @@ const Hero: React.FC = () => {
 
         <ScrollReveal direction="up" delay={400}>
           <div
-            className="max-w-3xl mx-auto mb-12"
+            className="max-w-3xl mx-auto mb-12 px-4"
             style={getParallaxStyle(0.15)}
           >
-            <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 font-light leading-relaxed">
+            <p className="text-lg md:text-2xl text-slate-600 dark:text-slate-400 font-light leading-relaxed">
               Crafting{' '}
               <span className="text-slate-900 dark:text-white font-medium">
                 high-performance

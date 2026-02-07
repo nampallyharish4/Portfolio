@@ -66,7 +66,7 @@ const About: React.FC = () => {
 
                 <div className="relative glass-ultra rounded-[1.5rem] p-6 flex flex-col items-center overflow-hidden ambient-shadow">
                   <div
-                    className="relative w-3/5 aspect-square rounded-full border-4 overflow-hidden mb-6 mx-auto"
+                    className="relative w-4/5 sm:w-3/5 aspect-square rounded-full border-4 overflow-hidden mb-6 mx-auto"
                     style={{
                       borderColor: 'rgba(255,255,255,0.2)',
                       boxShadow:
@@ -162,7 +162,7 @@ const About: React.FC = () => {
           <div className="space-y-6">
             <ScrollReveal direction="right" delay={400}>
               <Card3D maxTilt={5} scale={1.01} className="rounded-2xl">
-                <div className="glass-strong p-6 rounded-2xl ambient-shadow">
+                <div className="glass-strong p-5 sm:p-8 rounded-2xl ambient-shadow">
                   <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-4 font-light">
                     I am a Passionate{' '}
                     <span className="text-slate-900 dark:text-white font-medium">
@@ -184,7 +184,7 @@ const About: React.FC = () => {
               </Card3D>
             </ScrollReveal>
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {keyHighlights.map((item, i) => (
                 <ScrollReveal key={i} direction="up" delay={500 + i * 75}>
                   <Card3D

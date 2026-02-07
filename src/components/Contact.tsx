@@ -77,8 +77,8 @@ const Contact: React.FC = () => {
           <div className="space-y-8">
             <ScrollReveal direction="left" delay={200}>
               <Card3D maxTilt={6} scale={1.02} className="rounded-[2rem]">
-                <div className="glass-strong p-10 rounded-[2rem] ambient-shadow">
-                  <h3 className="text-3xl font-bold mb-8">
+                <div className="glass-strong p-6 sm:p-10 rounded-[2rem] ambient-shadow">
+                  <h3 className="text-2xl sm:text-3xl font-bold mb-8">
                     Contact Information
                   </h3>
                   <div className="space-y-8">
@@ -188,7 +188,7 @@ const Contact: React.FC = () => {
             <Card3D maxTilt={6} scale={1.02} className="rounded-[2.5rem]">
               <form
                 onSubmit={handleSubmit}
-                className="glass-ultra p-10 rounded-[2.5rem] border border-white/10 space-y-6"
+                className="glass-ultra p-6 sm:p-10 rounded-[2.5rem] border border-white/10 space-y-6"
               >
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
