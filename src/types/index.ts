@@ -10,6 +10,7 @@ export interface Project {
   status: string;
   duration: string;
   team: string;
+  impact: string;
 }
 
 export interface Skill {
@@ -21,5 +22,6 @@ export interface Skill {
 export interface ContactForm {
   name: string;
   email: string;
+  subject: string;
   message: string;
 }

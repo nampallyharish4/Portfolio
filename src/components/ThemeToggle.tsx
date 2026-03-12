@@ -14,8 +14,8 @@ const ThemeToggle: React.FC = () => {
       <div
         className={`relative w-14 h-7 rounded-full transition-colors duration-500 ease-in-out ${
           theme === 'light'
-            ? 'bg-slate-200 shadow-inner'
-            : 'bg-slate-700 shadow-[inset_0_2px_4px_rgba(0,0,0,0.3)]'
+            ? 'bg-surface-200 shadow-inner'
+            : 'bg-surface-700 shadow-[inset_0_2px_4px_rgba(0,0,0,0.3)]'
         }`}
       >
         <div

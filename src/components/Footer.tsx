@@ -7,13 +7,13 @@ const Footer: React.FC = () => {
   const { scrollToTop } = useSmoothScroll();
 
   return (
-    <footer className="py-12 relative overflow-hidden border-t border-white/5 bg-slate-50 dark:bg-slate-950 transition-colors">
+    <footer className="py-12 relative overflow-hidden border-t border-white/5 bg-surface-50 dark:bg-surface-950 transition-colors">
       <div className="max-w-7xl mx-auto px-8 sm:px-12 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="text-center md:text-left">
             <h3 className="text-2xl font-bold mb-2">Nampally Harish</h3>
-            <p className="text-slate-500 dark:text-slate-400 font-medium">
-              Full-Stack Developer & UI Designer
+            <p className="text-surface-500 dark:text-surface-400 font-medium">
+              Full-Stack Engineer
             </p>
           </div>
 
@@ -24,30 +24,22 @@ const Footer: React.FC = () => {
                   <img
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
                     className="w-5 h-5 dark:invert"
-                    alt="Github"
+                    alt="GitHub"
                   />
                 ),
                 href: 'https://github.com/nampallyharish4',
+                label: 'GitHub profile',
               },
               {
                 icon: (
                   <img
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
                     className="w-5 h-5"
-                    alt="Linkedin"
+                    alt="LinkedIn"
                   />
                 ),
                 href: 'https://www.linkedin.com/in/nampallyharish4/',
-              },
-              {
-                icon: (
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/twitter/twitter-original.svg"
-                    className="w-5 h-5"
-                    alt="Twitter"
-                  />
-                ),
-                href: '#',
+                label: 'LinkedIn profile',
               },
             ].map((social, i) => (
               <Card3D key={i} maxTilt={15} scale={1.1} className="rounded-xl">
@@ -55,6 +47,7 @@ const Footer: React.FC = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={social.label}
                   className="w-11 h-11 flex items-center justify-center rounded-xl glass-light hover:glass-ultra transition-all block overflow-hidden"
                 >
                   {social.icon}
@@ -77,11 +70,14 @@ const Footer: React.FC = () => {
           </Card3D>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-slate-200 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500 font-medium">
-          <p>&copy; 2025 Nampally Harish. All rights reserved.</p>
+        <div className="mt-12 pt-8 border-t border-surface-200 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-surface-500 font-medium">
+          <p>
+            &copy; {new Date().getFullYear()} Nampally Harish. All rights
+            reserved.
+          </p>
           <p className="flex items-center gap-2">
-            Build with <Heart className="w-4 h-4 text-red-500 fill-current" />{' '}
-            using React
+            Built with <Heart className="w-4 h-4 text-brand-500 fill-current" />{' '}
+            using React & TypeScript
           </p>
         </div>
       </div>

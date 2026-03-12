@@ -10,7 +10,7 @@ import Footer from './components/Footer';
 function App() {
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-slate-50 dark:bg-gray-950 transition-colors duration-700">
+      <div className="min-h-screen bg-surface-50 dark:bg-surface-950 transition-colors duration-700">
         <Navigation />
         <main className="relative px-4 sm:px-8 lg:px-12">
           <Hero />

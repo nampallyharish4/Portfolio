@@ -1,5 +1,5 @@
 import React from 'react';
-import { Users, Code, Zap, Lightbulb } from 'lucide-react';
+import { Users, Code, Zap, Lightbulb, Target, TrendingUp } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 import { useSmoothScroll } from '../hooks/useScrollEffect';
 import Card3D from './Card3D';
@@ -10,33 +10,33 @@ const About: React.FC = () => {
   const keyHighlights = [
     {
       icon: <Code className="w-5 h-5" />,
-      title: 'Technical Excellence',
+      title: 'End-to-End Delivery',
       description:
-        'Expertise in modern web technologies including React, Node.js, and TypeScript.',
-      color: 'text-blue-500',
-      gradient: 'from-blue-500/20 to-blue-600/10',
+        'From Java/Spring Boot APIs to React frontends — I own the full stack, not just a slice.',
+      color: 'text-brand-500',
+      gradient: 'from-brand-500/20 to-brand-600/10',
     },
     {
-      icon: <Lightbulb className="w-5 h-5" />,
-      title: 'Innovation',
+      icon: <TrendingUp className="w-5 h-5" />,
+      title: 'Performance-Obsessed',
       description:
-        'Passionate about finding creative solutions to complex digital challenges.',
-      color: 'text-purple-500',
-      gradient: 'from-purple-500/20 to-purple-600/10',
+        'I optimize for speed: sub-second API responses, lazy-loaded UIs, efficient database queries.',
+      color: 'text-accent-500',
+      gradient: 'from-accent-500/20 to-accent-600/10',
     },
     {
       icon: <Users className="w-5 h-5" />,
-      title: 'Collaboration',
+      title: 'Team Multiplier',
       description:
-        'Strong team player with excellent communication and leadership skills.',
-      color: 'text-green-500',
-      gradient: 'from-green-500/20 to-green-600/10',
+        'Code reviews, mentoring, clear PRs — I make the team around me stronger.',
+      color: 'text-emerald-500',
+      gradient: 'from-emerald-500/20 to-emerald-600/10',
     },
     {
-      icon: <Zap className="w-5 h-5" />,
-      title: 'Performance',
+      icon: <Target className="w-5 h-5" />,
+      title: 'Ship & Iterate',
       description:
-        'Focus on delivering high-performance applications with exceptional UX.',
+        'Agile-native. I scope ruthlessly, ship incrementally, and refactor pragmatically.',
       color: 'text-orange-500',
       gradient: 'from-orange-500/20 to-orange-600/10',
     },
@@ -47,10 +47,10 @@ const About: React.FC = () => {
       <div className="max-w-6xl mx-auto px-8 sm:px-12 relative z-10 layer-3d">
         <ScrollReveal direction="up">
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-slate-900 to-slate-500 dark:from-white dark:to-slate-400 bg-clip-text text-transparent inline-block font-sans">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-surface-900 to-surface-500 dark:from-white dark:to-surface-400 bg-clip-text text-transparent inline-block font-sans">
               About Me
             </h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full" />
+            <div className="w-16 h-1 bg-gradient-to-r from-brand-500 to-accent-500 mx-auto rounded-full" />
           </div>
         </ScrollReveal>
 
@@ -62,7 +62,7 @@ const About: React.FC = () => {
               className="max-w-sm mx-auto lg:mx-0 rounded-[1.5rem]"
             >
               <div className="relative group">
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-[2rem] blur-lg opacity-20 group-hover:opacity-40 transition duration-700" />
+                <div className="absolute -inset-1 bg-gradient-to-r from-brand-500 to-accent-500 rounded-[2rem] blur-lg opacity-20 group-hover:opacity-40 transition duration-700" />
 
                 <div className="relative glass-ultra rounded-[1.5rem] p-6 flex flex-col items-center overflow-hidden ambient-shadow">
                   <div
@@ -75,32 +75,41 @@ const About: React.FC = () => {
                   >
                     <img
                       src="/profile2.png"
-                      alt="Nampally Harish"
+                      alt="Nampally Harish - Full-Stack Engineer"
                       className="w-full h-full object-cover transform scale-105 group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-transparent opacity-50" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-surface-900/50 via-transparent to-transparent opacity-50" />
                   </div>
 
                   <div className="w-full text-center">
                     <h3 className="text-2xl font-bold mb-1">Nampally Harish</h3>
-                    <p className="text-blue-600 dark:text-blue-400 font-medium text-sm mb-6 uppercase tracking-widest">
-                      Full-Stack Developer
+                    <p className="text-brand-600 dark:text-brand-400 font-medium text-sm mb-6 uppercase tracking-widest">
+                      Full-Stack Engineer
                     </p>
 
-                    <div className="mb-6">
-                      <Card3D
-                        maxTilt={10}
-                        scale={1.05}
-                        depth={10}
-                        className="rounded-xl"
-                      >
-                        <div className="glass-medium py-3 px-2 rounded-xl">
-                          <span className="block text-xl font-bold">15+</span>
-                          <span className="text-[9px] text-slate-500 uppercase tracking-tighter font-bold">
-                            Projects
-                          </span>
-                        </div>
-                      </Card3D>
+                    <div className="grid grid-cols-3 gap-2 mb-6">
+                      {[
+                        { value: '15+', label: 'Projects' },
+                        { value: '3+', label: 'Years' },
+                        { value: '10+', label: 'Technologies' },
+                      ].map((stat, i) => (
+                        <Card3D
+                          key={i}
+                          maxTilt={10}
+                          scale={1.05}
+                          depth={10}
+                          className="rounded-xl"
+                        >
+                          <div className="glass-medium py-3 px-2 rounded-xl">
+                            <span className="block text-xl font-bold text-brand-600 dark:text-brand-400">
+                              {stat.value}
+                            </span>
+                            <span className="text-[9px] text-surface-500 uppercase tracking-tighter font-bold">
+                              {stat.label}
+                            </span>
+                          </div>
+                        </Card3D>
+                      ))}
                     </div>
 
                     <div className="flex gap-2 w-full justify-center">
@@ -163,22 +172,26 @@ const About: React.FC = () => {
             <ScrollReveal direction="right" delay={400}>
               <Card3D maxTilt={5} scale={1.01} className="rounded-2xl">
                 <div className="glass-strong p-5 sm:p-8 rounded-2xl ambient-shadow">
-                  <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-4 font-light">
-                    I am a Passionate{' '}
-                    <span className="text-slate-900 dark:text-white font-medium">
-                      Full-Stack Developer
+                  <p className="text-base text-surface-600 dark:text-surface-300 leading-relaxed mb-4 font-light">
+                    I build{' '}
+                    <span className="text-surface-900 dark:text-white font-semibold">
+                      production-grade full-stack applications
                     </span>{' '}
-                    on a mission to build digital bridges between complex
-                    engineering and human-centric design. I don't just write
-                    code; I weave performance and aesthetics into scalable
-                    ecosystems.
+                    that solve real business problems. With deep expertise in{' '}
+                    <span className="text-brand-600 dark:text-brand-400 font-medium">
+                      Java, Spring Boot, React, and Next.js
+                    </span>
+                    , I bridge the gap between robust backend systems and
+                    delightful user experiences.
                   </p>
-                  <p className="text-base text-slate-600 dark:text-slate-400 leading-relaxed font-light">
-                    From the precision of backend logic to the fluidity of
-                    modern interfaces, I specialize in turning complex
-                    challenges into seamless digital experiences. Every project
-                    is a canvas where I blend high-performance engineering with
-                    creative innovation.
+                  <p className="text-base text-surface-600 dark:text-surface-400 leading-relaxed font-light">
+                    Targeting roles in{' '}
+                    <span className="text-accent-600 dark:text-accent-400 font-medium">
+                      fintech, startups, and FAANG-tier companies
+                    </span>{' '}
+                    where engineering quality and speed of delivery both matter.
+                    I thrive in fast-paced environments that value clean
+                    architecture and shipping working software.
                   </p>
                 </div>
               </Card3D>
@@ -208,7 +221,7 @@ const About: React.FC = () => {
                       </div>
                       <div>
                         <h4 className="font-bold text-sm">{item.title}</h4>
-                        <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-2">
+                        <p className="text-[11px] text-surface-500 dark:text-surface-400 line-clamp-2">
                           {item.description}
                         </p>
                       </div>
@@ -222,12 +235,12 @@ const About: React.FC = () => {
               <Card3D maxTilt={6} scale={1.03} className="rounded-xl">
                 <button
                   onClick={() => scrollToElement('contact', 100)}
-                  className="px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-bold text-base glow-effect"
+                  className="px-8 py-3 bg-gradient-to-r from-brand-500 to-brand-600 text-white rounded-xl font-bold text-base glow-effect"
                   style={{
-                    boxShadow: '0 15px 30px -10px rgba(59, 130, 246, 0.4)',
+                    boxShadow: '0 15px 30px -10px rgba(224, 125, 30, 0.4)',
                   }}
                 >
-                  Let's Collaborate
+                  Hire Me — Let's Talk
                 </button>
               </Card3D>
             </ScrollReveal>

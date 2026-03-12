@@ -42,7 +42,7 @@ const Contact: React.FC = () => {
     },
     {
       icon: (
-        <div className="w-6 h-6 flex items-center justify-center bg-emerald-500 rounded-lg shadow-sm">
+        <div className="w-6 h-6 flex items-center justify-center bg-accent-500 rounded-lg shadow-sm">
           <Phone className="w-4 h-4 text-white" />
         </div>
       ),
@@ -52,7 +52,7 @@ const Contact: React.FC = () => {
     },
     {
       icon: (
-        <div className="w-6 h-6 flex items-center justify-center bg-rose-500 rounded-lg shadow-sm">
+        <div className="w-6 h-6 flex items-center justify-center bg-brand-500 rounded-lg shadow-sm">
           <MapPin className="w-4 h-4 text-white" />
         </div>
       ),
@@ -66,10 +66,14 @@ const Contact: React.FC = () => {
       <div className="max-w-7xl mx-auto px-8 sm:px-12 relative z-10 layer-3d">
         <ScrollReveal direction="up">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-slate-900 to-slate-500 dark:from-white dark:to-slate-400 bg-clip-text text-transparent inline-block font-sans">
-              Get In Touch
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-surface-900 to-surface-500 dark:from-white dark:to-surface-400 bg-clip-text text-transparent inline-block font-sans">
+              Let's Build Something Together
             </h2>
-            <div className="w-20 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full" />
+            <p className="text-surface-500 dark:text-surface-400 text-lg max-w-2xl mx-auto mb-4">
+              Currently open to full-stack and frontend engineering roles at
+              startups, fintech, and top-tier companies.
+            </p>
+            <div className="w-20 h-1.5 bg-gradient-to-r from-brand-500 to-accent-500 mx-auto rounded-full" />
           </div>
         </ScrollReveal>
 
@@ -91,10 +95,10 @@ const Contact: React.FC = () => {
                       >
                         <div className="flex items-center space-x-6 group p-2 -m-2 rounded-xl">
                           <div
-                            className="w-12 h-12 flex items-center justify-center rounded-2xl glass-medium group-hover:glass-ultra transition-all text-blue-500"
+                            className="w-12 h-12 flex items-center justify-center rounded-2xl glass-medium group-hover:glass-ultra transition-all text-brand-500"
                             style={{
                               boxShadow:
-                                '0 8px 20px -8px rgba(59, 130, 246, 0.2)',
+                                '0 8px 20px -8px rgba(224, 125, 30, 0.2)',
                             }}
                           >
                             {React.cloneElement(
@@ -103,13 +107,13 @@ const Contact: React.FC = () => {
                             )}
                           </div>
                           <div>
-                            <p className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-1">
+                            <p className="text-sm font-bold text-surface-500 uppercase tracking-widest mb-1">
                               {info.label}
                             </p>
                             {info.href ? (
                               <a
                                 href={info.href}
-                                className="text-lg font-medium hover:text-blue-500 transition-colors"
+                                className="text-lg font-medium hover:text-brand-500 transition-colors"
                               >
                                 {info.value}
                               </a>
@@ -125,8 +129,8 @@ const Contact: React.FC = () => {
                   </div>
 
                   <div className="mt-12 pt-12 border-t border-white/10">
-                    <h4 className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-6">
-                      Social Connect
+                    <h4 className="text-sm font-bold text-surface-500 uppercase tracking-widest mb-6">
+                      Connect With Me
                     </h4>
                     <div className="flex space-x-4">
                       {[
@@ -139,26 +143,18 @@ const Contact: React.FC = () => {
                             />
                           ),
                           href: 'https://github.com/nampallyharish4',
+                          label: 'GitHub',
                         },
                         {
                           icon: (
                             <img
                               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
                               className="w-6 h-6"
-                              alt="Linkedin"
+                              alt="LinkedIn"
                             />
                           ),
                           href: 'https://www.linkedin.com/in/nampallyharish4/',
-                        },
-                        {
-                          icon: (
-                            <img
-                              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/twitter/twitter-original.svg"
-                              className="w-6 h-6"
-                              alt="Twitter"
-                            />
-                          ),
-                          href: '#',
+                          label: 'LinkedIn',
                         },
                       ].map((social, i) => (
                         <Card3D
@@ -172,6 +168,7 @@ const Contact: React.FC = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="w-12 h-12 flex items-center justify-center rounded-xl glass-light hover:glass-ultra transition-all block overflow-hidden"
+                            aria-label={social.label}
                           >
                             {social.icon}
                           </a>
@@ -192,67 +189,83 @@ const Contact: React.FC = () => {
               >
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-sm font-bold text-slate-500 uppercase tracking-widest px-2">
+                    <label
+                      htmlFor="contact-name"
+                      className="text-sm font-bold text-surface-500 uppercase tracking-widest px-2"
+                    >
                       Your Name
                     </label>
                     <input
+                      id="contact-name"
                       type="text"
                       name="name"
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-6 py-4 rounded-2xl glass-light border border-white/10 focus:glass-medium outline-none transition-all dark:bg-transparent"
+                      className="w-full px-6 py-4 rounded-2xl glass-light border border-white/10 focus:glass-medium focus:border-brand-500/30 outline-none transition-all dark:bg-transparent"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-bold text-slate-500 uppercase tracking-widest px-2">
+                    <label
+                      htmlFor="contact-email"
+                      className="text-sm font-bold text-surface-500 uppercase tracking-widest px-2"
+                    >
                       Your Email
                     </label>
                     <input
+                      id="contact-email"
                       type="email"
                       name="email"
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-6 py-4 rounded-2xl glass-light border border-white/10 focus:glass-medium outline-none transition-all dark:bg-transparent"
+                      className="w-full px-6 py-4 rounded-2xl glass-light border border-white/10 focus:glass-medium focus:border-brand-500/30 outline-none transition-all dark:bg-transparent"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-slate-500 uppercase tracking-widest px-2">
+                  <label
+                    htmlFor="contact-subject"
+                    className="text-sm font-bold text-surface-500 uppercase tracking-widest px-2"
+                  >
                     Subject
                   </label>
                   <input
+                    id="contact-subject"
                     type="text"
                     name="subject"
                     required
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-6 py-4 rounded-2xl glass-light border border-white/10 focus:glass-medium outline-none transition-all dark:bg-transparent"
+                    className="w-full px-6 py-4 rounded-2xl glass-light border border-white/10 focus:glass-medium focus:border-brand-500/30 outline-none transition-all dark:bg-transparent"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-slate-500 uppercase tracking-widest px-2">
+                  <label
+                    htmlFor="contact-message"
+                    className="text-sm font-bold text-surface-500 uppercase tracking-widest px-2"
+                  >
                     Message
                   </label>
                   <textarea
+                    id="contact-message"
                     name="message"
                     required
                     rows={5}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-6 py-4 rounded-2xl glass-light border border-white/10 focus:glass-medium outline-none transition-all resize-none dark:bg-transparent"
+                    className="w-full px-6 py-4 rounded-2xl glass-light border border-white/10 focus:glass-medium focus:border-brand-500/30 outline-none transition-all resize-none dark:bg-transparent"
                   />
                 </div>
 
                 <Card3D maxTilt={6} scale={1.02} className="w-full rounded-2xl">
                   <button
                     type="submit"
-                    className="w-full py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl font-bold text-lg flex justify-center items-center gap-2 transition-all glow-effect"
+                    className="w-full py-5 bg-gradient-to-r from-brand-500 to-brand-600 text-white rounded-2xl font-bold text-lg flex justify-center items-center gap-2 transition-all glow-effect"
                     style={{
-                      boxShadow: '0 15px 35px -10px rgba(0,0,0,0.3)',
+                      boxShadow: '0 15px 35px -10px rgba(224, 125, 30, 0.4)',
                     }}
                   >
                     <span>Send Message</span>
