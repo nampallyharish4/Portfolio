@@ -6,20 +6,32 @@ import TechnicalSkills from './components/TechnicalSkills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import Experience from './components/Experience';
+import OtherProjects from './components/OtherProjects';
+import Loader from './components/Loader';
+import Cursor from './components/Cursor';
+import ScrollProgress from './components/ScrollProgress';
+import Education from './components/Education';
 
 function App() {
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-surface-50 dark:bg-surface-950 transition-colors duration-700">
+      <div className="site-shell">
+        <Loader />
+        <Cursor />
+        <ScrollProgress />
         <Navigation />
-        <main className="relative px-4 sm:px-8 lg:px-12">
+        <main>
           <Hero />
           <About />
           <TechnicalSkills />
           <Projects />
+          <OtherProjects />
+          <Experience />
+          <Education />
           <Contact />
-          <Footer />
         </main>
+        <Footer />
       </div>
     </ThemeProvider>
   );

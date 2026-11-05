@@ -26,29 +26,38 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
   const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const node = elementRef.current;
+    if (!node) return;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reducedMotion) {
+      setIsVisible(true);
+      setHasAnimated(true);
+      return;
+    }
+
+    let timer: ReturnType<typeof setTimeout> | undefined;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated) {
-          setTimeout(() => {
+          timer = setTimeout(() => {
             setIsVisible(true);
             setHasAnimated(true);
           }, delay);
+          observer.disconnect();
         }
       },
       { 
         threshold,
-        rootMargin: '100px 0px -50px 0px' // Start animation earlier for smoother experience
+        rootMargin: '0px 0px -10% 0px'
       }
     );
 
-    if (elementRef.current) {
-      observer.observe(elementRef.current);
-    }
+    observer.observe(node);
 
     return () => {
-      if (elementRef.current) {
-        observer.unobserve(elementRef.current);
-      }
+      observer.disconnect();
+      if (timer) clearTimeout(timer);
     };
   }, [delay, threshold, hasAnimated]);
 
@@ -73,26 +82,19 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
     }
   };
 
-  const getFilter = () => {
-    return isVisible ? 'blur(0px)' : 'blur(2px)';
-  };
-
-  const getOpacity = () => {
-    return isVisible ? 1 : 0;
-  };
-
   return (
     <div
       ref={elementRef}
-      className={`${className} smooth-reveal`}
+      className={`${className} smooth-reveal ${isVisible ? 'is-visible' : ''}`}
       style={{
-        opacity: getOpacity(),
         transform: getTransform(),
-        filter: getFilter(),
-        transition: `all ${duration}ms ${easing}`,
+        transition: `opacity ${duration}ms ${easing}, transform ${duration}ms ${easing}, filter ${duration}ms ${easing}`,
+        transitionDelay: `${delay}ms`,
+        opacity: isVisible ? 1 : 0,
+        filter: isVisible ? 'blur(0)' : 'blur(4px)',
         willChange: 'transform, opacity, filter',
         backfaceVisibility: 'hidden',
-        perspective: '1000px'
+        perspective: '1000px',
       }}
     >
       {children}

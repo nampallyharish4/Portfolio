@@ -91,7 +91,7 @@ export const useActiveSection = () => {
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
-    const sections = ['home', 'about', 'skills', 'projects', 'contact'];
+    const sections = ['home', 'about', 'skills', 'projects', 'other-projects', 'experience', 'education', 'contact'];
     let ticking = false;
 
     const handleScroll = () => {

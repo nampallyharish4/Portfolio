@@ -1,0 +1,9 @@
+<svg width="520" height="640" viewBox="0 0 520 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="520" height="640" fill="#D6D3C9"/>
+  <rect x="24" y="24" width="472" height="592" stroke="#BD4B2D" stroke-width="2"/>
+  <circle cx="260" cy="250" r="92" fill="#B7B9AF"/>
+  <path d="M108 548C108 443.23 176.079 358 260 358C343.921 358 412 443.23 412 548V576H108V548Z" fill="#B7B9AF"/>
+  <path d="M120 120H400" stroke="#BD4B2D" stroke-width="2"/>
+  <text x="260" y="88" text-anchor="middle" fill="#1D211C" font-family="monospace" font-size="16" letter-spacing="3">YOUR PHOTO HERE</text>
+  <text x="260" y="600" text-anchor="middle" fill="#1D211C" font-family="monospace" font-size="12" letter-spacing="2">REPLACE /hero-image-placeholder.svg</text>
+</svg>
